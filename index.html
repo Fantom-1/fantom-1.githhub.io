@@ -669,7 +669,25 @@ display: none;
   }
 	</style>
 </head>
-<body id="body">
+<body id="body"><SCRIPT>
+		passWord();
+		function passWord() {
+			var testV = 1;
+			var pass1 = prompt('Please Enter Your Password',' ');
+			while (testV < 3) {
+				if (!pass1) history.go(-1);
+				if (pass1.toLowerCase() == "irisalphaaccess") {
+					alert('Correct Password !');
+					break;
+				} 
+				else {
+					alert("Unauthorised access, window is stucked in loop according to system safety protocol 404. This message will be displyed again again unless the window is closed ");
+				}
+			}
+			
+			
+		}
+		</SCRIPT>
 	<header id="header">
 		<button id="show" onclick="refreshPage()">Reload Securly</button>
 		<div id="content">
