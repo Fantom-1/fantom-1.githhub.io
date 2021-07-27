@@ -819,17 +819,7 @@ display: none;
 function refreshPage(){
   window.location.reload();
 }
-//-------------------------------------------------------------Sign Up finish-----------------------------------------------------------------
-//-------------------------------------------------------mobile responsivness----------------------------------------------------------------//
-function SettShow(){
-	mobilesett = document.getElementById("mobiledrop").style.display = "block"
-  size = document.getElementById('visible').style.filter = "blur(10px)"
-	}
-function SettCut(){
-  mobilesett = document.getElementById("mobiledrop").style.display = "none"
-  size = document.getElementById('visible').style.filter = "none"
-}
-//
+//------------------------------------------------------------refresh finish ---------------------------------------------------------------//
 // hacking Function--------------------------------------------------------------------------------------------------------------------------
 function Hacker(){
  header =  document.getElementById('header').style.background = "#f3f3f3 url('alert.jpg') no-repeat center";
@@ -838,7 +828,95 @@ function Hacker(){
   button = document.getElementById('show').style.display = "block";
 
 }
+//--------------------------------------------------------------audio player--------------------------------------------------------------------------------//
+var audio_files = [
+  "/songs/closer.mp3",
+  "/songs/Legends Never Die.mp3",
+  "/songs/Despacito.mp3",
+  "/songs/Mood.mp3",
+  "/songs/First Class.mp3",
+  "/songs/Jeete Hain.mp3",
+  "/songs/Lut Gaye.mp3",
+  "/songs/Maay Bhavani.mp3",
+  "/songs/Shaabaashiyaan.mp3",
+  "/songs/Slow Motion.mp3",
+  "/songs/Yaad Piya Ki Aane Lagi.mp3",
+  "/songs/Muqabla.mp3"
+  ]
+  var random_file = audio_files[Math.floor(Math.random() * audio_files.length)];
+  
+  var audio = new Audio(random_file);
 
+function playAudio() { 
+    audio.play(); 
+} 
+function pauseAudio() {
+  audio.pause();
+}
+// volume control increase
+function decVol1(){
+  audio.volume-=0.10;
+}
+function decVol2(){
+  audio.volume-=0.20;
+}
+function decVol3(){
+  audio.volume-=0.30;
+}
+function decVol4(){
+  audio.volume-=0.40;
+}
+function decVol5(){
+  audio.volume-=0.50;
+}
+function decVol6(){
+  audio.volume-=0.60;
+}
+function decVol7(){
+  audio.volume-=0.70;
+}
+function decVol8(){
+  audio.volume-=0.80;
+}
+function decVol9(){
+  audio.volume-=0.90;
+}
+function decVol10(){
+  audio.volume-=0.110;
+}
+// increase volume
+function incVol1(){
+  audio.volume+=0.10;
+}
+function incVol2(){
+  audio.volume+=0.20;
+}
+function incVol3(){
+  audio.volume+=0.30;
+}
+function incVol4(){
+  audio.volume+=0.40;
+}
+function incVol5(){
+  audio.volume+=0.50;
+}
+function incVol6(){
+  audio.volume+=0.60;
+}
+function incVol7(){
+  audio.volume+=0.70;
+}
+function incVol8(){
+  audio.volume+=0.80;
+}
+function incVol9(){
+  audio.volume+=0.90;
+}
+function incVol10(){
+  audio.volume+=0.100;
+}
+//
+//---------------------------------------------------------Audio player finish--------------------------------------------------------------
 //------------------------------------------------------ Corona Cases function ---------------------------------------------------------------//
 window.onload = function() {
 	getCovidStats();
@@ -1233,6 +1311,140 @@ else if(text.includes("on YouTube")){
   YouTube();
 }
 
+// Playing audio execution---------------------------------------------------------------------------------------------------------------------
+// playing audio
+else if (text.includes(songs[0])){
+  speech.text = resongs[Math.floor(Math.random()*resongs.length)];
+playAudio();
+}
+else if (text.includes(songs[1])){
+  speech.text = resongs[Math.floor(Math.random()*resongs.length)];
+playAudio();
+}
+else if (text.includes(songs[2])){
+  speech.text = resongs[Math.floor(Math.random()*resongs.length)];
+playAudio();
+}
+else if (text.includes(songs[3])){
+  speech.text = resongs[Math.floor(Math.random()*resongs.length)];
+playAudio();
+}
+else if (text.includes(songs[4])){
+  speech.text = resongs[Math.floor(Math.random()*resongs.length)];
+playAudio();
+}
+else if (text.includes(songs[5])){
+  speech.text = resongs[Math.floor(Math.random()*resongs.length)];
+playAudio();
+}
+else if (text.includes(songs[6])){
+  speech.text = resongs[Math.floor(Math.random()*resongs.length)];
+playAudio();
+}
+else if (text.includes(songs[7])){
+  speech.text = resongs[Math.floor(Math.random()*resongs.length)];
+playAudio();
+}
+//pausing audio
+else if(text.includes("stop music")){
+speech.text = stopmu[Math.floor(Math.random()*stopmu.length)];
+pauseAudio();
+}
+else if(text.includes("stop songs")){
+speech.text = stopmu[Math.floor(Math.random()*stopmu.length)];
+pauseAudio();
+}
+else if(text.includes("stop the song")){
+speech.text = stopmu[Math.floor(Math.random()*stopmu.length)];
+pauseAudio();
+}
+else if(text.includes("stop song")){
+speech.text = stopmu[Math.floor(Math.random()*stopmu.length)];
+pauseAudio();
+  }
+// Volume control decrease
+else if(text.includes(devol[0])){
+  speech.text = "Decreasing volume to 10% !"
+  decVol1();
+}
+else if(text.includes(devol[1])){
+  speech.text = "Decreasing volume to 20% !"
+  decVol2();
+}
+else if(text.includes(devol[2])){
+  speech.text = "Decreasing volume to 30% !"
+  decVol3();
+}
+else if(text.includes(devol[3])){
+  speech.text = "Decreasing volume to 40% !"
+  decVol4();
+}
+else if(text.includes(devol[4])){
+  speech.text = "Decreasing volume to 50% !"
+  decVol5();
+}
+else if(text.includes(devol[5])){
+  speech.text = "Decreasing 0volume to 60% !"
+  decVol6();
+}
+else if(text.includes(devol[6])){
+  speech.text = 'Decreasing volume to 70%'
+  decVol7();
+}
+else if(text.includes(devol[7])){
+  speech.text = 'Decreasing volume to 80%'
+  decVol8();
+}
+else if(text.includes(devol[8])){
+  speech.text = 'Decreasing volume to 90%'
+  decVol9();
+}
+else if(text.includes(devol[9])){
+  speech.text = 'Decreasing volume to 100%'
+  decVol10();
+}
+// volume contron increase
+else if(text.includes(invol[0])){
+  speech.text = "Increasing volume by 10% !"
+  incVol1();
+}
+else if(text.includes(invol[1])){
+  speech.text = "Increasing volume by 20% !"
+  incVol2();
+}
+else if(text.includes(invol[2])){
+  speech.text = "Increasing volume by 30% !"
+  incVol3();
+}
+else if(text.includes(invol[3])){
+  speech.text = "Increasing volume by 40% !"
+  incVol4();
+}
+else if(text.includes(invol[4])){
+  speech.text = "Increasing volume by 50% !"
+  incVol5();
+}
+else if(text.includes(invol[5])){
+  speech.text = "Increasing volume by 60% !"
+  incVol6();
+}
+else if(text.includes(invol[6])){
+  speech.text = "Increasing volume by 70% !"
+  incVol7();
+}
+else if(text.includes(invol[7])){
+  speech.text = "Increasing volume by 80% !"
+  incVol8();
+}
+else if(text.includes(invol[8])){
+  speech.text = "Increasing volume by 90% !"
+  incVol9();
+}
+else if(text.includes(invol[9])){
+  speech.text = "Increasing volume by 100% !"
+  incVol10();
+}
+	
 // Hacker 
 else if (text.includes('hacking you')){
 speech.text = "Windows is crashed due to system safety protocol 404, It will be reloaded again after detecting the threat. Or else click the reload securely button to kill the threat and start server again";
