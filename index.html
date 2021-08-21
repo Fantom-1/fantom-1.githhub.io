@@ -494,8 +494,8 @@ display: none;
 	0 0 90px #1292e7;
 }
 #ip_info{
-	border: 2px solid rgb(0, 255, 200);
-	padding: 5px;
+	border: 2px solid rgb(0, 204, 255);
+	padding: 5px 20px;
 	position: absolute;
 	top: 15%;
 	left: 60%;
@@ -509,6 +509,15 @@ display: none;
 			font-weight: 300;
 			font-family: 'Courier New', Courier, monospace;
 			color: rgb(0, 255, 221);
+}
+#ip_info p{
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 12px;
+	color: #fff;
+}
+#ip_info button{
+	position: absolute;
+	top: 96%;
 }
 @media only screen and (max-width: 600px)  {
 	.pccontent {
@@ -663,9 +672,9 @@ display: none;
 	#canvas{
 		display: none;
 	}
-	#ip_info{
+         #ip_info{
 		border: 2px solid rgb(255, 255, 255);
-		padding: 5px;
+		padding: 5px 20px;
 		position: absolute;
 		top: 15%;
 		left: 25%;
@@ -674,6 +683,8 @@ display: none;
 		overflow: scroll;
 		background-color: #000000;
 		z-index: 12;
+		padding: 5px 20px;
+
 	}
 	#ip_info button{
 		border: inherit;
@@ -708,6 +719,7 @@ display: none;
 </head>
 <body id="body">
 	<div id="ip_info">
+		<p>Root@MJ[~]:-</p><br>
 		<h1 id="ip"></h1><br>
 		<h1 id="city"></h1><br>
 		<h1 id="postal"></h1><br>
@@ -723,6 +735,7 @@ display: none;
 		<button onclick="IpHide()">Close</button>
 
 	</div>
+
 	<header id="header">
 		<button id="show" onclick="refreshPage()">Reload Securly</button>
 		<div id="content">
@@ -884,18 +897,18 @@ function Hacker(){
 //----------------------------------------------------------ip_info--------------------------------------------------------//
 let ipKey = 'be0f755b93290b4c100445d77533d291763a417c75524e95e07819ad';
 $.getJSON('https://api.ipdata.co?api-key=' + ipKey, function(data) {
-	document.getElementById("ip").innerHTML = JSON.stringify(data, ["ip"], 2);
-	document.getElementById("city").innerHTML = JSON.stringify(data, ["city"], 2);
-	document.getElementById("postal").innerHTML = JSON.stringify(data, ["postal"], 2);
-	document.getElementById("region").innerHTML = JSON.stringify(data, ["region"], 2);
-	document.getElementById("region_code").innerHTML = JSON.stringify(data, ["region_code"], 2);
-	document.getElementById("country_name").innerHTML = JSON.stringify(data, ["country_name"], 2);
-	document.getElementById("country_code").innerHTML = JSON.stringify(data, ["country_code"], 2);
-	document.getElementById("continent_name").innerHTML = JSON.stringify(data, ["continent_name"], 2);
-	document.getElementById("continent_code").innerHTML = JSON.stringify(data, ["continent_code"], 2);
-	document.getElementById("latitude").innerHTML = JSON.stringify(data, ["latitude"], 2);
-	document.getElementById("longitude").innerHTML = JSON.stringify(data, ["longitude"], 2);
-	document.getElementById("calling_code").innerHTML = JSON.stringify(data, ["calling_code"], 2);
+	document.getElementById("ip").innerHTML = "IP: " + data.ip;
+	document.getElementById("city").innerHTML = "City: " + data.city;
+	document.getElementById("postal").innerHTML = "Postal Code: " + data.postal;
+	document.getElementById("region").innerHTML = "Region: " + data.region;
+	document.getElementById("region_code").innerHTML = "Region Code: " + data.region_code;
+	document.getElementById("country_name").innerHTML = "Country: " + data.country_name;
+	document.getElementById("country_code").innerHTML = "Country Code: " + data.country_code;
+	document.getElementById("continent_name").innerHTML = "Continent: " + data.continent_name ;
+	document.getElementById("continent_code").innerHTML = "Continent Code: " +  data.continent_code;
+	document.getElementById("latitude").innerHTML = "Latitude: " + data.latitude;
+	document.getElementById("longitude").innerHTML = "Longitude: " + data.longitude;
+	document.getElementById("calling_code").innerHTML = "Call Code: " + data.calling_code;
 
   console.log(JSON.stringify(data, undefined, 2));
 }
@@ -1389,9 +1402,9 @@ else if(text.includes("on YouTube")){
   speech.text = reyoutube[Math.floor(Math.random()*reyoutube.length)];
   YouTube();
 }
-// IP info
-else if (text.includes('IP information')){
-speech.text = "Using current device stats, here is what I found !"
+// Ip Info
+else if (text.includes('IP information')){ 
+ speech.text = "Here is what I got for you !"
 IpShow();
 }
 // Playing audio execution---------------------------------------------------------------------------------------------------------------------
