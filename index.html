@@ -28,7 +28,7 @@
 
 header{
     background-color: #071024;
-    background-image:  url("https://cdn.dribbble.com/users/1373613/screenshots/5488391/ai-fire.gif");
+    background-image:  url(bg.gif);
     background-position: center;
     height: 100vh;
     background-repeat: no-repeat;
@@ -315,7 +315,6 @@ span{
 	display: none;
 }
 #result{
-	border: 1px solid;
 	position: absolute;
 	top: 35%;
 	left: 2%;
@@ -469,6 +468,7 @@ display: none;
 				0 0 80px #1fd2ff;
 	transition: 0.4s ease-out;
 }
+
 #canvas{
 	position: absolute;
 	top: 50%;
@@ -531,7 +531,8 @@ display: none;
     height: 50%;
     padding: 5px 20px;
     display: none;
-    line-height: 30px;
+	line-height: 30px;
+}
 @media only screen and (max-width: 600px)  {
 	.pccontent {
 	  display: none;
@@ -685,7 +686,7 @@ display: none;
 	#canvas{
 		display: none;
 	}
-         #ip_info{
+	#ip_info{
 		border: 2px solid rgb(255, 255, 255);
 		padding: 5px 20px;
 		position: absolute;
@@ -727,7 +728,9 @@ display: none;
 	.drop{
 		display: none;
 	}
+	
   }
+  
 	</style>
 </head>
 <body id="body">
