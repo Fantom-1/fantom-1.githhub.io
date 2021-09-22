@@ -519,6 +519,19 @@ display: none;
 	position: absolute;
 	top: 96%;
 }
+#wikiwrite {
+    position: absolute;
+    top: 25%;
+    left: 36%;
+    background-color: #000;
+    color: greenyellow;
+    border: 1px solid #fff;
+    overflow: auto;
+    width: 25%;
+    height: 50%;
+    padding: 5px 20px;
+    display: none;
+    line-height: 30px;
 @media only screen and (max-width: 600px)  {
 	.pccontent {
 	  display: none;
@@ -718,6 +731,7 @@ display: none;
 	</style>
 </head>
 <body id="body">
+	<div id="wikiwrite"></div>
 	<div id="ip_info">
 		<p>Root@MJ[~]:-</p><br>
 		<h1 id="ip"></h1><br>
@@ -917,6 +931,10 @@ function IpShow(){
 function IpHide(){
 	document.getElementById("ip_info").style.display = "none";
 }
+function WikiClose(){
+  document.getElementById("wikiwrite").style.display = "none";
+}
+		
 //--------------------------------------------------------------audio player--------------------------------------------------------------------------------//
 var audio_files = [
   "./songs/closer.mp3",
@@ -1221,6 +1239,9 @@ function read(text){
     speech.pitch = '0.97';
     speech.rate = '0.80'
     speech.volume = 1;
+	
+    var wikititle = text.replace(" ", "_");
+    var wikititle = wikititle.replace("Wikipedia", " ");
 
     if(text.includes('time'))
     speech.text = 'It is '+new Date().getHours() + " " + new Date().getMinutes()+" right now";
@@ -1537,7 +1558,28 @@ else if(text.includes(invol[9])){
   speech.text = "Increasing volume by 100% !"
   incVol10();
 }
-	
+// wikipedi program
+else if(text.includes("Wikipedia")){
+  speech.text = "According to data"
+  $.getJSON("https://en.wikipedia.org/api/rest_v1/page/summary/" + wikititle, function (data) {
+    var bill = data.extract;
+    console.log(data.extract);
+    speech.text = document.getElementById("wikiwrite").innerHTML = bill; 
+    document.getElementById("wikiwrite").style.display = "block";
+    const msg = new SpeechSynthesisUtterance(bill);
+    window.speechSynthesis.speak(msg);
+});
+}
+else if(text.includes("get the screen cleared")){
+  WikiClose(); 
+  IpHide();
+  speech.text = "as you wish boss !"
+}
+else if(text.includes("clear the screen")){
+  WikiClose(); 
+  IpHide();
+  speech.text = "as you wish boss !"
+}
 // Hacker 
 else if (text.includes('hacking you')){
 speech.text = "Windows is crashed due to system safety protocol 404, It will be reloaded again after detecting the threat. Or else click the reload securely button to kill the threat and start server again";
