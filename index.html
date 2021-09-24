@@ -1219,7 +1219,9 @@ const rerefresh = ["Ok Boss !", "As you wish boss !", "Anything for you boss !",
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
-
+function MarathiLang(){
+  recognition.lang = "mr-IN";
+}
 
 recognition.onstart = function(){
     console.log('You can speak now');
@@ -1239,15 +1241,28 @@ alert('Hi This is I.R.I.S your digital assistant')
 function read(text){
     var speech = new SpeechSynthesisUtterance();
     speech.text = text;
-    speech.pitch = '0.97';
-    speech.rate = '0.80'
+    speech.pitch = '1';
+    speech.rate = '0.9'
     speech.volume = 1;
-	
+    var voices = window.speechSynthesis.getVoices();
+    speech.voice = voices[8];
+
+    
+    function StopSpeak(){
+      window.speechSynthesis.cancel()
+    }
+
     var wikititle = text.replace(" ", "_");
     var wikititle = wikititle.replace("Wikipedia", " ");
 
     if(text.includes('time'))
     speech.text = 'It is '+new Date().getHours() + " " + new Date().getMinutes()+" right now";
+    else if(text.includes("switch to Marathi")) {
+    speech.text = "Multi language recognition protocol, Speech recognition language changed to Marathi";
+     MarathiLang();
+    }
+    else if(text.includes('तुझं नाव काय आहे'))
+    speech.text = "माझे नाव रावी आहे, आणि मी तुमचा वैयक्तिक डिजिटल सहाय्यक आहे.";
     else if(text.includes('who is Tushar'))
     speech.text = 'He is a boy with having some weired jobs to do, sometimes irritating and some time time wasting.';
     else if(text.includes('who created you'))
@@ -1569,9 +1584,19 @@ else if(text.includes("Wikipedia")){
     console.log(data.extract);
     speech.text = document.getElementById("wikiwrite").innerHTML = bill; 
     document.getElementById("wikiwrite").style.display = "block";
-    const msg = new SpeechSynthesisUtterance(bill);
+    const msg = new SpeechSynthesisUtterance();
+    msg.text = bill;
+    msg.pitch = '1';
+    msg.rate = '0.9'
+    msg.volume = 1;
+    var voices = window.speechSynthesis.getVoices();
+    msg.voice = voices[8];
     window.speechSynthesis.speak(msg);
 });
+}
+else if(text.includes("stop")){
+  speech.text = " "
+  StopSpeak();
 }
 else if(text.includes("get the screen cleared")){
   WikiClose(); 
@@ -1583,18 +1608,27 @@ else if(text.includes("clear the screen")){
   IpHide();
   speech.text = "as you wish boss !"
 }
-// Hacker 
-else if (text.includes('hacking you')){
-speech.text = "Windows is crashed due to system safety protocol 404, It will be reloaded again after detecting the threat. Or else click the reload securely button to kill the threat and start server again";
-Hacker();
-alert("Detected a threat. Initializing safety protocol 404. Click OK to procced further");
-}
-else if (text.includes('start system safety protocol')){
-speech.text = "Windows is crashed due to system safety protocol 404, It will be reloaded again after detecting the threat. Or else click the reload securely button to kill the threat and start server again";
-Hacker();
-alert("Detected a threat. Initializing safety protocol 404. Click OK to procced further");
-}
 
+// image search
+else if(text.includes("image")){
+  var key = text
+  var key = key.replace("image", "")
+  var key = key.replace(" ", "+");
+  window.open("https://www.google.com/search?q=" + key + "&hl=en&site=imghp&tbm=isch")
+}
+else if(text.includes("images")){
+  var key = text
+  var key = key.replace("images", "")
+  var key = key.replace(" ", "+");
+  window.open("https://www.google.com/search?q=" + key + "&hl=en&site=imghp&tbm=isch")
+}
+// movie download execution
+else if(text.includes("movie download")){
+  var key = text
+  var key = key.replace("download", "")
+  var key = key.replace("movie", "")
+  var key = key.replace(" ", "+");
+  window.open("https://themoviesflix.co.com/?s=" + key)
 // google search execution 
 else if (text.includes('show')){
   speech.text = "Opening page !"  ;
