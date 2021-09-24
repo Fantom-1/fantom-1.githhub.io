@@ -894,19 +894,19 @@ display: none;
 	<script>
 		const btn = document.getElementById('btn');
 // functions for jarvis
+
+// online function
+let Connected = window.navigator.onLine;
+if (!Connected) {
+  alert('Connection ERROR 400, check the internet connection & try again, Iris may not function to its full potential')
+} 
+else{
+  alert('connected to iris')
+}
   
 //------------------------------------------------------------Refresh Function---------------------------------------------------------------
 function refreshPage(){
   window.location.reload();
-}
-//------------------------------------------------------------refresh finish ---------------------------------------------------------------//
-// hacking Function--------------------------------------------------------------------------------------------------------------------------
-function Hacker(){
- header =  document.getElementById('header').style.background = "#f3f3f3 url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_Hq7caDBcddNaMh0JBegrc_EMWhzdPfz3WZUPJm5kF1X_gq_rTq8EfI4XGAT-ek7gUUw&usqp=CAU') no-repeat center";
- size = document.getElementById('header').style.backgroundSize = "cover";
- content = document.getElementById('content').style.display = "none";
-  button = document.getElementById('show').style.display = "block";
-
 }
 //----------------------------------------------------------ip_info--------------------------------------------------------//
 let ipKey = 'be0f755b93290b4c100445d77533d291763a417c75524e95e07819ad';
@@ -937,21 +937,20 @@ function IpHide(){
 function WikiClose(){
   document.getElementById("wikiwrite").style.display = "none";
 }
-		
-//--------------------------------------------------------------audio player--------------------------------------------------------------------------------//
+//-------------------------------------------------------------Audio Player-----------------------------------------------------------------//
 var audio_files = [
-  "./songs/closer.mp3",
-  "./songs/Legends Never Die.mp3",
-  "./songs/Despacito.mp3",
-  "./songs/Mood.mp3",
-  "./songs/First Class.mp3",
-  "./songs/Jeete Hain.mp3",
-  "./songs/Lut Gaye.mp3",
-  "./songs/Maay Bhavani.mp3",
-  "./songs/Shaabaashiyaan.mp3",
-  "./songs/Slow Motion.mp3",
-  "./songs/Yaad Piya Ki Aane Lagi.mp3",
-  "./songs/Muqabla.mp3"
+  "F:AI/Songs/closer.mp3",
+  "F:AI/Songs/Legends Never Die.mp3",
+  "F:/AI/Songs/Despacito.mp3",
+  "F:/AI/Songs/Mood.mp3",
+  "F:/AI/Songs/First Class.mp3",
+  "F:/AI/Songs/Jeete Hain.mp3",
+  "F:/AI/Songs/Lut Gaye.mp3",
+  "F:/AI/Songs/Maay Bhavani.mp3",
+  "F:/AI/Songs/Shaabaashiyaan.mp3",
+  "F:/AI/Songs/Slow Motion.mp3",
+  "F:/AI/Songs/Yaad Piya Ki Aane Lagi.mp3",
+  "F:/AI/Songs/Muqabla.mp3"
   ]
   var random_file = audio_files[Math.floor(Math.random() * audio_files.length)];
   
@@ -1027,6 +1026,23 @@ function incVol10(){
 }
 //
 //---------------------------------------------------------Audio player finish--------------------------------------------------------------
+// hacking Function--------------------------------------------------------------------------------------------------------------------------
+function Hacker(){
+ header =  document.getElementById('header').style.background = "#f3f3f3 url('alert.jpg') no-repeat center";
+ size = document.getElementById('header').style.backgroundSize = "cover";
+ content = document.getElementById('content').style.display = "none";
+  button = document.getElementById('show').style.display = "block";
+
+}
+//-------------------------------------------------------mobile responsivness----------------------------------------------------------------//
+function SettShow(){
+	mobilesett = document.getElementById("mobiledrop").style.display = "block"
+  size = document.getElementById('visible').style.filter = "blur(10px)"
+	}
+function SettCut(){
+  mobilesett = document.getElementById("mobiledrop").style.display = "none"
+  size = document.getElementById('visible').style.filter = "none"
+}
 //------------------------------------------------------ Corona Cases function ---------------------------------------------------------------//
 window.onload = function() {
 	getCovidStats();
@@ -1064,7 +1080,7 @@ function GooGle(){
   var t = g.replace("Google", " ")
     window.open("https://www.google.com/search?q="+t);
   }
-
+//-------------------------------------------------------Google opening finish----------------------------------------------------------------//
   //----------------------------------------------------Youtube Video function----------------------------------------------------------------//
   function YouTube(){
     const yo = document.querySelector('#result').innerHTML;
@@ -1074,8 +1090,6 @@ function GooGle(){
       window.open("https://www.youtube.com/results?search_query="+youtu);
   }
   //----------------------------------------------------Youtub video function finish----------------------------------------------------------//
-//-------------------------------------------------------Google opening finish----------------------------------------------------------------//
-
 //-------------------------------------------------------weather api--------------------------------------------------------------------------------------------------//
 // Openweathermap API. Do not share it publicly.
 const api = 'f2c8148fd7782ee088e661f3265314b1'; //Replace with your API
@@ -1117,6 +1131,7 @@ window.addEventListener('load', () => {
           const sunsetGMT = new Date(sunset * 1000);
 
           // Interacting with DOM to show data
+          iconImg.src = iconUrl;
           loc.textContent = `${place}`;
           desc.textContent = `${description}`;
           tempC.textContent = `${temp.toFixed(2)} °C`;
@@ -1193,7 +1208,7 @@ const yourday = ["how was your day", "how was the day", "how is the day going"]
 const gnews= ["good news"];
 const badnews = ["bad news"];
 const battery = ["battery level", "charging", "how much you can work"]
-const songs = ["play songs", "play music", "drop the pin", "get me some beats", "play a song", "play song", "resume song", "resume the song"]
+const songs = ["play songs", "play music", "drop the pin", "get me some beats", "play a song", "play song", "resume song", "resume the song", "resume the song"]
 const refresh = ["refresh", "reload yourself", "restart yourself", "rework yourself"]
 const devol = ["decrease volume 10%", "decrease volume 20%", "decrease volume 30%", "decrease volume 40%", "decrease volume 50%", "decrease volume 60%", "decrease volume 70%", "decrease volume 80%", "decrease volume 90%", "decrease volume hundred percent"]
 const invol = ["increase volume 10%", "increase volume 20%", "increase volume 30%", "increase volume 40%", "increase volume 50%", "increase volume 60%", "increase volume 70%", "increase volume 80%", "increase volume 90%", "increase volume hundred percent"]
@@ -1234,7 +1249,7 @@ recognition.onresult = function(event){
     read(text);
 }
 
-alert("Getting servers ready. Please stand By.")
+alert("Establishing secure connection [~] Please stand By.")
 alert('Hi This is I.R.I.S your digital assistant')
 
 
@@ -1254,12 +1269,14 @@ function read(text){
 
     var wikititle = text.replace(" ", "_");
     var wikititle = wikititle.replace("Wikipedia", " ");
+    
+
 
     if(text.includes('time'))
     speech.text = 'It is '+new Date().getHours() + " " + new Date().getMinutes()+" right now";
     else if(text.includes("switch to Marathi")) {
-    speech.text = "Multi language recognition protocol, Speech recognition language changed to Marathi";
-     MarathiLang();
+      speech.text = "Multi language recognition protocol, Speech recognition language changed to Marathi";
+      MarathiLang();
     }
     else if(text.includes('तुझं नाव काय आहे'))
     speech.text = "माझे नाव रावी आहे, आणि मी तुमचा वैयक्तिक डिजिटल सहाय्यक आहे.";
@@ -1438,7 +1455,14 @@ else if(text.includes("on YouTube")){
   speech.text = reyoutube[Math.floor(Math.random()*reyoutube.length)];
   YouTube();
 }
-// Ip Info
+
+// Hacker 
+else if (text.includes('hacking you')){
+speech.text = "Windows is crashed due to system safety protocol 404, It will be reloaded again after detecting the threat. Or else click the reload securely button to kill the threat and start server again";
+Hacker();
+alert("Detected a threat. Initializing safety protocol 404. Click OK to procced further");
+}
+// IP info
 else if (text.includes('IP information')){ 
  speech.text = "Here is what I got for you !"
 IpShow();
@@ -1576,6 +1600,7 @@ else if(text.includes(invol[9])){
   speech.text = "Increasing volume by 100% !"
   incVol10();
 }
+//-----------------------------------------------------------------------------------------------------------------------------------------
 // wikipedi program
 else if(text.includes("Wikipedia")){
   speech.text = "According to data"
@@ -1629,7 +1654,8 @@ else if(text.includes("movie download")){
   var key = key.replace("movie", "")
   var key = key.replace(" ", "+");
   window.open("https://themoviesflix.co.com/?s=" + key)
-// google search execution 
+
+}// google search execution 
 else if (text.includes('show')){
   speech.text = "Opening page !"  ;
 show();
@@ -1645,11 +1671,6 @@ else if(text.includes('open webcam')){
 speech.text = "Opening WebCam !"
 window.open ("file:///F:/AI/Web%20Cam/web.html",
 "mywindow","menubar=1,,width=510,height=385");
-}
-else if(text.includes('Yash Khedekar')){
-speech.text = "Code accepted. Please wait for ridirecting !"
-window.open ("scam.html",
-"mywindow","menubar=1,,width=810,height=510");
 }
 
     window.speechSynthesis.speak(speech);
