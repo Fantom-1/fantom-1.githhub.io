@@ -905,7 +905,7 @@ else{
 }
 //------------------------------------------------------------Notification Function--------------------------------------------------------
 function displayNotification() {
-  if (Notification.permission == 'granted' && now.getDate() === 27 && now.getHours() === 8 && now.getMinutes() === 28) {
+  if (Notification.permission == 'granted' && date.getDate() === 27 && date.getHours() === 8 && date.getMinutes === 31) {
     navigator.serviceWorker.getRegistration().then(function(reg) {
       var options = {
         body: 'Here is a notification body!',
