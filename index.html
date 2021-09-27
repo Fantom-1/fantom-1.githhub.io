@@ -906,7 +906,7 @@ else{
 //------------------------------------------------------------Notification Function--------------------------------------------------------
 			window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 11 && date.getMinutes() === 28){ // Check the time
+    if(date.getHours() === 11 && date.getMinutes() === 30){ // Check the time
         (async () => {
     // create and show the notification
     const showNotification = () => {
@@ -919,7 +919,7 @@ else{
         // close the notification after 10 seconds
         setTimeout(() => {
             notification.close();
-        }, 10 * 1000);
+        }, 10 * 2000);
 
         // navigate to a URL when clicked
         notification.addEventListener('click', () => {
