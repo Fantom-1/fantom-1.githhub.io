@@ -906,20 +906,27 @@ else{
 //------------------------------------------------------------Notification Function--------------------------------------------------------
 			window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 11 && date.getMinutes() === 35){ // Check the time
-        (async () => {
+    if(date.getHours() === 11 && date.getMinutes() === 55){ // Check the time
+    var NoteBody = "System Check"
+    var NoteTitle = "I.R.I.S ~ Reminder for Mr. Yash"
+    Notify();
+    }
+}, 30000); // Repeat every 30000 milliseconds (30 sec)
+
+		
+function Notify() {	(async () => {
     // create and show the notification
     const showNotification = () => {
         // create a new notification
-        const notification = new Notification('I.R.I.S ~ Reminder for Yash Khedekar', {
-            body: 'The class is over boss !',
-            icon: 'https://pngpress.com/wp-content/uploads/2020/09/uploads_letter_i_letter_i_PNG61.png'
+        const notification = new Notification(NoteTitle, {
+            body: NoteBody,
+            icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf-s-8AKa1ZkuOXxkVT1fMoWDHYFFkRzeryWxt8K4Jn2SBNgQpOGZwYJp8f_wX09sR_Mk&usqp=CAU'
         });
 
         // close the notification after 10 seconds
         setTimeout(() => {
             notification.close();
-        }, 10 * 2000);
+        }, 10 * 1000);
 
         // navigate to a URL when clicked
         notification.addEventListener('click', () => {
@@ -948,9 +955,7 @@ else{
     // show notification or error
     granted ? showNotification() : showError();
 
-})();
-    }
-}, 60000); // Repeat every 60000 milliseconds (1 minute)
+})();}
 //------------------------------------------------------------Refresh Function---------------------------------------------------------------
 function refreshPage(){
   window.location.reload();
