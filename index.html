@@ -905,7 +905,7 @@ else{
 //------------------------------------------------------------Notification Function--------------------------------------------------------
 window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 20 && date.getMinutes() === 44){ // Check the time
+    if(date.getHours() === 20 && date.getMinutes() === 46){ // Check the time
       showNotification();
     }
 }, 60000); // Repeat every 60000 milliseconds (1 minute)
@@ -919,7 +919,7 @@ if(permission === "granted") {
   alert("Use normal alert");
 }
 function showNotification() {
-   if(document.visibilityState === "visible) {
+   if(document.visibilityState === "visible") {
        return;
    }
    var title = "JavaScript Jeep";
