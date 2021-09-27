@@ -905,17 +905,20 @@ else{
 //------------------------------------------------------------Notification Function--------------------------------------------------------
 window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 20 && date.getMinutes() === 39){ // Check the time
-        let permission = Notification.permission;
+    if(date.getHours() === 20 && date.getMinutes() === 42){ // Check the time
+ showNotification();
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+	
+let permission = Notification.permission;
 if(permission === "granted") {
    showNotification();
 } else if(permission === "default"){
    requestAndShowPermission();
+} else {
+  alert("Use normal alert");
 }
-}, 60000); // Repeat every 60000 milliseconds (1 minute)
-	
 function showNotification() {
-   if(document.visibilityState === "visible") {
+   if(document.visibilityState === "visible) {
        return;
    }
    var title = "JavaScript Jeep";
@@ -934,7 +937,6 @@ function requestAndShowPermission() {
       }
    });
 }
-    }
 //------------------------------------------------------------Refresh Function---------------------------------------------------------------
 function refreshPage(){
   window.location.reload();
