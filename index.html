@@ -906,15 +906,8 @@ else{
 //------------------------------------------------------------Notification Function--------------------------------------------------------
 			window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 19 && date.getMinutes() === 25){ // Check the time
-    var NoteBody = "System Check"
-    var NoteTitle = "I.R.I.S ~ Reminder for Mr. Yash"
-    Notify();
-    }
-}, 30000); // Repeat every 30000 milliseconds (30 sec)
-
-		
-function Notify() {	(async () => {
+    if(date.getHours() === 19 && date.getMinutes() === 29){ // Check the time
+    (async () => {
     // create and show the notification
     const showNotification = () => {
         // create a new notification
@@ -934,6 +927,10 @@ function Notify() {	(async () => {
             window.open('https://www.javascripttutorial.net/web-apis/javascript-notification/', '_blank');
         });
     }
+}, 30000); // Repeat every 30000 milliseconds (30 sec)
+
+		
+
 
     // show an error message
     const showError = () => {
