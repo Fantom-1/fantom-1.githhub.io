@@ -906,13 +906,14 @@ else{
 //------------------------------------------------------------Notification Function--------------------------------------------------------
 window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 20 && date.getMinutes() === 20){ // Check the time
+    if(date.getHours() === 20 && date.getMinutes() === 23){ // Check the time
         (async () => {
     // create and show the notification
     const showNotification = () => {
         // create a new notification
         const notification = new Notification('JavaScript Notification API', {
             body: 'This is a JavaScript Notification API demo',
+            icon: './img/js.png'
         });
 
         // close the notification after 10 seconds
