@@ -904,30 +904,53 @@ else{
   alert('connected to iris')
 }
 //------------------------------------------------------------Notification Function--------------------------------------------------------
-			if(date.getHours() === 9 && date.getMinutes() === 16){
-			    askForApproval();
-			}
-			
-			
-            function askForApproval() {
-                if(Notification.permission === "granted" ) {
-                    createNotification('Wow! This is great', 'created by @study.tonight', 'https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png');
-                }
-                else {
-                    Notification.requestPermission(permission => {
-                        if(permission === 'granted') {
-                            createNotification('Wow! This is great', 'created by @study.tonight', 'https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png');
-                        }
-                    });
-                }
-            }
-            
-            function createNotification(title, text, icon) {
-                const noti = new Notification(title, {
-                    body: text,
-                    icon
-                });
-            }
+			window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 8 && date.getMinutes() === 0){ // Check the time
+        (async () => {
+    // create and show the notification
+    const showNotification = () => {
+        // create a new notification
+        const notification = new Notification('JavaScript Notification API', {
+            body: 'This is a JavaScript Notification API demo',
+            icon: 'https://pngpress.com/wp-content/uploads/2020/09/uploads_letter_i_letter_i_PNG61.png'
+        });
+
+        // close the notification after 10 seconds
+        setTimeout(() => {
+            notification.close();
+        }, 10 * 1000);
+
+        // navigate to a URL when clicked
+        notification.addEventListener('click', () => {
+
+            window.open('https://www.javascripttutorial.net/web-apis/javascript-notification/', '_blank');
+        });
+    }
+
+    // show an error message
+    const showError = () => {
+        const error = document.querySelector('.error');
+        error.style.display = 'block';
+        error.textContent = 'You blocked the notifications';
+    }
+
+    // check notification permission
+    let granted = false;
+
+    if (Notification.permission === 'granted') {
+        granted = true;
+    } else if (Notification.permission !== 'denied') {
+        let permission = await Notification.requestPermission();
+        granted = permission === 'granted' ? true : false;
+    }
+
+    // show notification or error
+    granted ? showNotification() : showError();
+
+})();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
 //------------------------------------------------------------Refresh Function---------------------------------------------------------------
 function refreshPage(){
   window.location.reload();
