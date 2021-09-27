@@ -903,12 +903,6 @@ else{
   alert('connected to iris')
 }
 //------------------------------------------------------------Notification Function--------------------------------------------------------
-window.setInterval(function(){ // Set interval for checking
-    var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 21 && date.getMinutes() === 3){ // Check the time
-      showNotification();
-    }
-}, 60000); // Repeat every 60000 milliseconds (1 minute)
 let permission = Notification.permission;
 if(permission === "granted") {
    showNotification();
