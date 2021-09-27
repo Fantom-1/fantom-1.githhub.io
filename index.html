@@ -849,7 +849,7 @@ display: none;
 	let url = 'http://feeds.bbci.co.uk/news/technology/rss.xml';
 		const textarea = document.querySelector('#feed-textarea > marquee');
 	  
-		const date = new Date();
+		var date = new Date();
 		document.querySelector('#date').innerHTML = date.toDateString();
 		  
 		  feednami.load(url)
@@ -904,7 +904,7 @@ else{
   alert('connected to iris')
 }
 //------------------------------------------------------------Notification Function--------------------------------------------------------
-			if(date.getHours() === 9 && date.getMinutes() === 14){
+			if(date.getHours() === 9 && date.getMinutes() === 16){
 			    askForApproval();
 			}
 			
