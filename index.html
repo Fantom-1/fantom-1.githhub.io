@@ -904,16 +904,15 @@ else{
   alert('connected to iris')
 }
 //------------------------------------------------------------Notification Function--------------------------------------------------------
-			window.setInterval(function(){ // Set interval for checking
+window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 20 && date.getMinutes() === 16){ // Check the time
-    (async () => {
+    if(date.getHours() === 20 && date.getMinutes() === 20){ // Check the time
+        (async () => {
     // create and show the notification
     const showNotification = () => {
         // create a new notification
-        const notification = new Notification(NoteTitle, {
-            body: NoteBody,
-            icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf-s-8AKa1ZkuOXxkVT1fMoWDHYFFkRzeryWxt8K4Jn2SBNgQpOGZwYJp8f_wX09sR_Mk&usqp=CAU'
+        const notification = new Notification('JavaScript Notification API', {
+            body: 'This is a JavaScript Notification API demo',
         });
 
         // close the notification after 10 seconds
@@ -927,10 +926,6 @@ else{
             window.open('https://www.javascripttutorial.net/web-apis/javascript-notification/', '_blank');
         });
     }
-}, 30000); // Repeat every 30000 milliseconds (30 sec)
-
-		
-
 
     // show an error message
     const showError = () => {
@@ -952,7 +947,9 @@ else{
     // show notification or error
     granted ? showNotification() : showError();
 
-})();}
+})();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
 //------------------------------------------------------------Refresh Function---------------------------------------------------------------
 function refreshPage(){
   window.location.reload();
