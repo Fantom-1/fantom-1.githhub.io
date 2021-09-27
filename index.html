@@ -904,23 +904,32 @@ else{
   alert('connected to iris')
 }
 //------------------------------------------------------------Notification Function--------------------------------------------------------
-function displayNotification() {
-  if (Notification.permission == 'granted' && date.getHours() === 8 && date.getMinutes === 35) {
-    navigator.serviceWorker.getRegistration().then(function(reg) {
-      var options = {
-        body: 'Here is a notification body!',
-        icon: 'images/example.png',
-        vibrate: [100, 50, 100],
-        data: {
-          dateOfArrival: Date.now(),
-          primaryKey: 1
-        }
-      };
-      reg.showNotification('Hello world!', options);
-    });
-  }
-}
-	displayNotification();	
+var date = new Date(); // Create Date object for a reference point
+			/* JS comes here */
+			if(date.getHours() === 9 && date.getMinutes() === 10){
+			    askForApproval();
+			}
+			
+			
+            function askForApproval() {
+                if(Notification.permission === "granted" ) {
+                    createNotification('Wow! This is great', 'created by @study.tonight', 'https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png');
+                }
+                else {
+                    Notification.requestPermission(permission => {
+                        if(permission === 'granted') {
+                            createNotification('Wow! This is great', 'created by @study.tonight', 'https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png');
+                        }
+                    });
+                }
+            }
+            
+            function createNotification(title, text, icon) {
+                const noti = new Notification(title, {
+                    body: text,
+                    icon
+                });
+            }
 //------------------------------------------------------------Refresh Function---------------------------------------------------------------
 function refreshPage(){
   window.location.reload();
