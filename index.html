@@ -905,7 +905,7 @@ else{
 //------------------------------------------------------------Notification Function--------------------------------------------------------
 window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 20 && date.getMinutes() === 33){ // Check the time
+    if(date.getHours() === 20 && date.getMinutes() === 36){ // Check the time
         let permission = Notification.permission;
 if(permission === "granted") {
    showNotification();
@@ -914,6 +914,8 @@ if(permission === "granted") {
 } else {
   alert("Use normal alert");
 }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+	
 function showNotification() {
    if(document.visibilityState === "visible") {
        return;
@@ -935,7 +937,6 @@ function requestAndShowPermission() {
    });
 }
     }
-}, 60000); // Repeat every 60000 milliseconds (1 minute)
 //------------------------------------------------------------Refresh Function---------------------------------------------------------------
 function refreshPage(){
   window.location.reload();
