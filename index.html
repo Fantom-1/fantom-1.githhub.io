@@ -28,7 +28,6 @@
 
 header{
     background-color: #071024;
-    background-image:  url(bg.gif);
     background-position: center;
     height: 100vh;
     background-repeat: no-repeat;
@@ -906,14 +905,14 @@ else{
 //------------------------------------------------------------Notification Function--------------------------------------------------------
 window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 20 && date.getMinutes() === 23){ // Check the time
+    if(date.getHours() === 20 && date.getMinutes() === 26){ // Check the time
         (async () => {
     // create and show the notification
     const showNotification = () => {
         // create a new notification
         const notification = new Notification('JavaScript Notification API', {
             body: 'This is a JavaScript Notification API demo',
-            icon: './img/js.png'
+            icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf-s-8AKa1ZkuOXxkVT1fMoWDHYFFkRzeryWxt8K4Jn2SBNgQpOGZwYJp8f_wX09sR_Mk&usqp=CAU'
         });
 
         // close the notification after 10 seconds
