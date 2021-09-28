@@ -903,14 +903,19 @@ else{
   alert('connected to iris')
 }
 //------------------------------------------------------------Notification Function--------------------------------------------------------
-var NoteTitle;
-var NoteBody;
+var NoteTitle = "Title";
+var NoteBody = "Body"
+
+
+function NoteChangeFunction(){
+var NoteTitle = "I.R.I.S ~ Reminder for Yash Khedekar";
+var NoteBody = "The notification function executed successfully";
+}
 window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 20 && date.getMinutes() === 0){ // Check the time
+    if(date.getHours() === 20 && date.getMinutes() === 14){ // Check the time
 	notifyMe();
-	    var NoteTitle = "I.R.I.S ~ Reminder for Mr. Yash";
-	    var NoteBody = "The notification 5 trial has been executed successfully !"
+        NoteChangeFunction();
     }
 }, 60000); // Repeat every 60000 milliseconds (1 minute)
 		
