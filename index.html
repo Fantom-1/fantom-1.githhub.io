@@ -905,25 +905,25 @@ else{
 //------------------------------------------------------------Notification Function--------------------------------------------------------
 window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 15 && date.getMinutes() === 54){ // Check the time
+    if(date.getHours() === 16 && date.getMinutes() === 0){ // Check the time
 	(async () => {
     // create and show the notification
     const showNotification = () => {
         // create a new notification
-        const notification = new Notification('JavaScript Notification API', {
-            body: 'This is a JavaScript Notification API demo',
-            icon: './img/js.png'
+        const notification = new Notification('I.R.I.S ~ Reminder to Mr. Yash Khedekar', {
+            body: 'Boss you had been working from a long time, suggeted to take a break',
+            icon: 'https://pngpress.com/wp-content/uploads/2020/09/uploads_letter_i_letter_i_PNG61.png'
         });
 
         // close the notification after 10 seconds
         setTimeout(() => {
             notification.close();
-        }, 10 * 1000);
+        }, 10 * 3000);
 
         // navigate to a URL when clicked
         notification.addEventListener('click', () => {
 
-            window.open('https://www.javascripttutorial.net/web-apis/javascript-notification/', '_blank');
+            window.open('https://pngpress.com/wp-content/uploads/2020/09/uploads_letter_i_letter_i_PNG61.png');
         });
     }
 
