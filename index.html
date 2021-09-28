@@ -903,53 +903,46 @@ else{
   alert('connected to iris')
 }
 //------------------------------------------------------------Notification Function--------------------------------------------------------
+var NoteTitle;
+var NoteBody;
 window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 16 && date.getMinutes() === 22){ // Check the time
-	(async () => {
-    // create and show the notification
-    const showNotification = () => {
-        // create a new notification
-        const notification = new Notification('I.R.I.S ~ Reminder to Mr. Yash Khedekar', {
-            body: 'Boss you had been working from a long time, suggeted to take a break',
-            icon: 'https://pngpress.com/wp-content/uploads/2020/09/uploads_letter_i_letter_i_PNG61.png'
-        });
-
-        // close the notification after 10 seconds
-        setTimeout(() => {
-            notification.close();
-        }, 10 * 3000);
-
-        // navigate to a URL when clicked
-        notification.addEventListener('click', () => {
-
-            window.open('https://pngpress.com/wp-content/uploads/2020/09/uploads_letter_i_letter_i_PNG61.png');
-        });
-    }
-
-    // show an error message
-    const showError = () => {
-        const error = document.querySelector('.error');
-        error.style.display = 'block';
-        error.textContent = 'You blocked the notifications';
-    }
-
-    // check notification permission
-    let granted = false;
-
-    if (Notification.permission === 'granted') {
-        granted = true;
-    } else if (Notification.permission !== 'denied') {
-        let permission = await Notification.requestPermission();
-        granted = permission === 'granted' ? true : false;
-    }
-
-    // show notification or error
-    granted ? showNotification() : showError();
-
-})();
+    if(date.getHours() === 20 && date.getMinutes() === 0){ // Check the time
+	notifyMe();
+	    var NoteTitle = "I.R.I.S ~ Reminder for Mr. Yash";
+	    var NoteBody = "The notification 5 trial has been executed successfully !"
     }
 }, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+function notifyMe() {
+  // Let's check if the browser supports notifications
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
+
+  // Let's check whether notification permissions have already been granted
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    var notification = new Notification(NoteTitle, {
+        body: NoteBody,
+        icon: 'https://pngpress.com/wp-content/uploads/2020/09/uploads_letter_i_letter_i_PNG61.png',
+        vibrate: true
+    });
+  }
+
+  // Otherwise, we need to ask the user for permission
+  else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(function (permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        var notification = new Notification("Hi there!");
+      }
+    });
+  }
+
+  // At last, if the user has denied notifications, and you
+  // want to be respectful there is no need to bother them any more.
+}
 //------------------------------------------------------------Refresh Function---------------------------------------------------------------
 function refreshPage(){
   window.location.reload();
