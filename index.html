@@ -905,13 +905,19 @@ else{
 //------------------------------------------------------------Notification Function--------------------------------------------------------
 window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 15 && date.getMinutes() === 36){ // Check the time
-        (async () => {
+    if(date.getHours() === 15 && date.getMinutes() === 46){ // Check the time
+	var NoteTitle = "I.R.I.S ~ Reminder to Mr. Yash";
+	var NoteBody = "Notification trial 3 executed successfully"
+        NotifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+function NotifyMe(){
+	        (async () => {
     // create and show the notification
     const showNotification = () => {
         // create a new notification
-        const notification = new Notification('I.R.I.S ~ Reminder for Mr. Yash', {
-            body: 'Notification Trial two is successfuly executed',
+        const notification = new Notification(NoteTitle , {
+            body: NoteBody ,
             icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf-s-8AKa1ZkuOXxkVT1fMoWDHYFFkRzeryWxt8K4Jn2SBNgQpOGZwYJp8f_wX09sR_Mk&usqp=CAU'
         });
 
@@ -947,9 +953,8 @@ window.setInterval(function(){ // Set interval for checking
     // show notification or error
     granted ? showNotification() : showError();
 
-})();
-    }
-}, 60000); // Repeat every 60000 milliseconds (1 minute)
+})();		
+}
 //------------------------------------------------------------Refresh Function---------------------------------------------------------------
 function refreshPage(){
   window.location.reload();
