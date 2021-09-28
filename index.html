@@ -908,13 +908,221 @@ var NoteBody = "Body"
 
 
 function NoteChangeFunction(){
-NoteTitle = "I.R.I.S ~ Reminder for Yash Khedekar";
-NoteBody = "The notification function executed successfully";
+NoteTitle = "I.R.I.S ~ Reminder for Mr. Yash";
+NoteBody = "You should go and drink some water !";
 }
 window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
     if(date.getHours() === 20 && date.getMinutes() === 36){ // Check the time
 	NoteChangeFunction();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+
+
+function NoteChangeFunction1(){
+NoteTitle = "I.R.I.S ~ Online Class Reminder for Mr. Yash";
+NoteBody = "First class will start at any moment, be ready boss !";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 8 && date.getMinutes() === 0){ // Check the time
+	NoteChangeFunction1();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+
+function NoteChangeFunction2(){
+NoteTitle = "I.R.I.S ~ Online Class Reminder for Mr. Yash";
+NoteBody = "First Period of online class should have been ended !";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 9 && date.getMinutes() === 0){ // Check the time
+	NoteChangeFunction2();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+	
+		
+function NoteChangeFunction3(){
+NoteTitle = "I.R.I.S ~ Online Class Reminder for Mr. Yash";
+NoteBody = "2nd Period is about to start, be ready boss !";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 9 && date.getMinutes() === 15){ // Check the time
+	NoteChangeFunction3();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+
+function NoteChangeFunction4(){
+NoteTitle = "I.R.I.S ~ Online Class Reminder for Mr. Yash";
+NoteBody = "2nd Period should have been ended till now.";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 10 && date.getMinutes() === 15){ // Check the time
+	NoteChangeFunction4();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+		
+function NoteChangeFunction5(){
+NoteTitle = "I.R.I.S ~ Online Class Reminder for Mr. Yash";
+NoteBody = "3rd class should have been ended !";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 10 && date.getMinutes() === 30){ // Check the time
+	NoteChangeFunction5();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+
+function NoteChangeFunction6(){
+NoteTitle = "I.R.I.S ~ Online Class Reminder for Mr. Yash";
+NoteBody = "Last class sholud have been ended boss! Just Chill & out take your lunch. I will notify you at the time of next task";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 11 && date.getMinutes() === 30){ // Check the time
+	NoteChangeFunction6();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+
+function NoteChangeFunction7(){
+NoteTitle = "I.R.I.S ~ Study Reminder for Mr. Yash";
+NoteBody = "Boss, according to time-table you sholud have started studing class 11 syllabus.";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 13 && date.getMinutes() === 0){ // Check the time
+	NoteChangeFunction7();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+
+function NoteChangeFunction8(){
+NoteTitle = "I.R.I.S ~ Study Reminder for Mr. Yash";
+NoteBody = "Mr. Yash according to set time-table the time is to start class 10 preparation!";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 14 && date.getMinutes() === 0){ // Check the time
+	NoteChangeFunction8();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+
+function NoteChangeFunction9(){
+NoteTitle = "I.R.I.S ~ Study Reminder for Mr. Yash";
+NoteBody = "Sir, I suggest you should complete your H.W for today's online lecture";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 15 && date.getMinutes() === 0){ // Check the time
+	NoteChangeFunction9();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+		
+function NoteChangeFunction10(){
+NoteTitle = "I.R.I.S ~ Fitness Reminder for Mr. Yash";
+NoteBody = "You have been sitting at one place for too long, I suggest to get out and play some sports. Health is Wealth !";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 16 && date.getMinutes() === 0){ // Check the time
+	NoteChangeFunction10();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+		
+function NoteChangeFunction11(){
+NoteTitle = "I.R.I.S ~ Time Up Reminder for Mr. Yash";
+NoteBody = "You have been playsing for a long time, get back and chill out with family.";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 18 && date.getMinutes() === 30){ // Check the time
+	NoteChangeFunction11();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+		
+function NoteChangeFunction12(){
+NoteTitle = "I.R.I.S ~ Time Up Reminder for Mr. Yash";
+NoteBody = "It's enough of rest for today, get back to work. Assignment: Class 11 syllabus";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 19 && date.getMinutes() === 0){ // Check the time
+	NoteChangeFunction12();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+		
+function NoteChangeFunction13(){
+NoteTitle = "I.R.I.S ~ Dinner Reminder for Mr. Yash";
+NoteBody = "Good Job, if you have completed work of class 11 for today. Have you deserving lunch now !";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 20 && date.getMinutes() === 0){ // Check the time
+	NoteChangeFunction13();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+		
+function NoteChangeFunction14(){
+NoteTitle = "I.R.I.S ~ Remainning Work Reminder for Mr. Yash";
+NoteBody = "Hope you enjoyed your lunch, I suggest for now that you should end up with your remaining work boss.";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 20 && date.getMinutes() === 30){ // Check the time
+	NoteChangeFunction14();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+		
+function NoteChangeFunction15(){
+NoteTitle = "I.R.I.S ~ PD Reminder for Mr. Yash";
+NoteBody = "Boss, I think now you should catch up with the self-learning & PD things.";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 21 && date.getMinutes() === 30){ // Check the time
+	NoteChangeFunction15();
+	notifyMe();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
+		
+		
+function NoteChangeFunction16(){
+NoteTitle = "I.R.I.S ~ Sleeping Reminder for Mr. Yash";
+NoteBody = "Sleeping time ! You have done a great job today. Have a deep and comfortable sleep";
+}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 22 && date.getMinutes() === 0){ // Check the time
+	NoteChangeFunction16();
 	notifyMe();
     }
 }, 60000); // Repeat every 60000 milliseconds (1 minute)
