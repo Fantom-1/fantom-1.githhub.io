@@ -907,19 +907,6 @@ var NoteTitle = "Title";
 var NoteBody = "Body"
 
 
-function NoteChangeFunction(){
-NoteTitle = "I.R.I.S ~ Reminder for Mr. Yash";
-NoteBody = "You should go and drink some water !";
-}
-window.setInterval(function(){ // Set interval for checking
-    var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 20 && date.getMinutes() === 36){ // Check the time
-	NoteChangeFunction();
-	notifyMe();
-    }
-}, 60000); // Repeat every 60000 milliseconds (1 minute)
-
-
 function NoteChangeFunction1(){
 NoteTitle = "I.R.I.S ~ Online Class Reminder for Mr. Yash";
 NoteBody = "First class will start at any moment, be ready boss !";
