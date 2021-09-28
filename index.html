@@ -905,26 +905,20 @@ else{
 //------------------------------------------------------------Notification Function--------------------------------------------------------
 window.setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 15 && date.getMinutes() === 49){ // Check the time
-	var NoteTitle = "I.R.I.S ~ Reminder to Mr. Yash";
-	var NoteBody = "Notification trial 3 executed successfully"
-        NotifyMe();
-    }
-}, 60000); // Repeat every 60000 milliseconds (1 minute)
-function NotifyMe(){
-	        (async () => {
+    if(date.getHours() === 15 && date.getMinutes() === 54){ // Check the time
+	(async () => {
     // create and show the notification
     const showNotification = () => {
         // create a new notification
-        const notification = new Notification(NoteTitle , {
-            body: NoteBody ,
-            icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf-s-8AKa1ZkuOXxkVT1fMoWDHYFFkRzeryWxt8K4Jn2SBNgQpOGZwYJp8f_wX09sR_Mk&usqp=CAU'
+        const notification = new Notification('JavaScript Notification API', {
+            body: 'This is a JavaScript Notification API demo',
+            icon: './img/js.png'
         });
 
         // close the notification after 10 seconds
         setTimeout(() => {
             notification.close();
-        }, 10 * 2000);
+        }, 10 * 1000);
 
         // navigate to a URL when clicked
         notification.addEventListener('click', () => {
@@ -953,8 +947,9 @@ function NotifyMe(){
     // show notification or error
     granted ? showNotification() : showError();
 
-})();		
-}
+})();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
 //------------------------------------------------------------Refresh Function---------------------------------------------------------------
 function refreshPage(){
   window.location.reload();
