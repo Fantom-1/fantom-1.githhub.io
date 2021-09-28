@@ -903,34 +903,53 @@ else{
   alert('connected to iris')
 }
 //------------------------------------------------------------Notification Function--------------------------------------------------------
-let permission = Notification.permission;
-if(permission === "granted") {
-   showNotification();
-} else if(permission === "default"){
-   requestAndShowPermission();
-} else {
-  alert("Use normal alert");
-}
-function showNotification() {
-   if(document.visibilityState === "visible") {
-       return;
-   }
-   var title = "JavaScript Jeep";
-   icon = "image-url"
-   var body = "Message to be displayed";
-   var notification = new Notification('Title', { body, icon });
-   notification.onclick = () => { 
-          notification.close();
-          window.parent.focus();
-   }
-}
-function requestAndShowPermission() {
-   Notification.requestPermission(function (permission) {
-      if (permission === "granted") {
-            showNotification();
-      }
-   });
-}
+window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 15 && date.getMinutes() === 28){ // Check the time
+        (async () => {
+    // create and show the notification
+    const showNotification = () => {
+        // create a new notification
+        const notification = new Notification('I.R.I.S ~ Reminder for Mr. Yash', {
+            body: 'Notification Trial One is successfuly executed',
+            icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf-s-8AKa1ZkuOXxkVT1fMoWDHYFFkRzeryWxt8K4Jn2SBNgQpOGZwYJp8f_wX09sR_Mk&usqp=CAU'
+        });
+
+        // close the notification after 10 seconds
+        setTimeout(() => {
+            notification.close();
+        }, 10 * 1000);
+
+        // navigate to a URL when clicked
+        notification.addEventListener('click', () => {
+
+            window.open('https://www.javascripttutorial.net/web-apis/javascript-notification/', '_blank');
+        });
+    }
+
+    // show an error message
+    const showError = () => {
+        const error = document.querySelector('.error');
+        error.style.display = 'block';
+        error.textContent = 'You blocked the notifications';
+    }
+
+    // check notification permission
+    let granted = false;
+
+    if (Notification.permission === 'granted') {
+        granted = true;
+    } else if (Notification.permission !== 'denied') {
+        let permission = await Notification.requestPermission();
+        granted = permission === 'granted' ? true : false;
+    }
+
+    // show notification or error
+    granted ? showNotification() : showError();
+
+})();
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
 //------------------------------------------------------------Refresh Function---------------------------------------------------------------
 function refreshPage(){
   window.location.reload();
