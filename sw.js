@@ -12,7 +12,7 @@ let cache_name = 'mysite-v1'
 
 let urls_to_cache = [
  '/',
- './index.html'
+ '/index.html'
 ]
 
 self.addEventListener('install', (e) => {
