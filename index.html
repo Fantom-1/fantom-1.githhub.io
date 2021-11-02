@@ -1903,7 +1903,11 @@ else if (text.includes('show')){
   speech.text = "Opening page !"  ;
 show();
 }
-
+// Call function
+else if (text.includes('call Tushar')){
+window.open("tel:7378300479");
+  speech.text = "As you wish boss"  ;
+}
 // google search execution 
 else if (text.includes('on Google')){
   speech.text = "Opening Google"  ;
