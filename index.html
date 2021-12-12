@@ -531,7 +531,91 @@ display: none;
     display: none;
 	line-height: 30px;
 }
+		.card-body{
+    position: absolute;
+    top: 25%;
+    left: 36%;
+    background-color: rgb(0, 0, 0);
+    color: #00fffc;
+    border: 3px solid rgb(0, 225, 255);
+    overflow: auto;
+    width: 30%;
+    padding: 5px 20px;
+	line-height: 30px;
+  font-size: 14px;
+  font-family: sans-serif;
+   display: none; 
+   z-index: 25;
+   backdrop-filter: blur(5px);
+  }
+  #ytdinput{
+    background-color: rgb(0, 0, 0);
+    color: #00fffc;
+    border: 1px solid rgb(0, 225, 255);
+    overflow: auto;
+    height: 60%;
+    width: 80%;
+    padding: 5px 20px;
+	line-height: 30px;
+  margin: 10px;
+  }
+  #form-control-formate{
+    background-color: rgb(0, 0, 0);
+    color: #00fffc;
+    border: 1px solid rgb(0, 225, 255);
+    height: 50%;
+    padding: 5px 20px;
+	line-height: 30px;
+  margin: 10px;
+  width: 70%;
+  text-align: center;
+  }
+  #ytdinput[type="txt"]::placeholder
+  {
+    color: rgba(255, 255, 255, 0.288);
+    font-style: italic;
+  }
+  #ytdbtn {
+  animation: input-entry 3s ease-in;
+  background: #222;
+  background: linear-gradient(#333333, #222222);
+  box-sizing: content-box;
+  border: 1px solid #444;
+  border-left-color: #000;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 #000;
+  color: #fff;
+  display: block;
+  font-family: 'Cabin', helvetica, arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  height: 40px;
+  line-height: 40px;
+  margin: 20px auto;
+  padding: 0;
+  position: relative;
+  text-shadow: 0 -1px 0 #000;
+  width: 400px;
+  transition: 1s all;
+}
+ #ytdbtn:hover,
+ #ytdbtn:focus {
+  background: #0C6125;
+  background: linear-gradient(#393939, #292929);
+  color: #00fffc;
+  outline: none;
+  transition: 1s all;
+}
+#ytdbtn:active {
+  background: #292929;
+  background: linear-gradient(#393939, #292929);
+  box-shadow: 0 1px 0 #000, inset 1px 0 1px #222;
+  top: 1px;
+}
 @media only screen and (max-width: 600px)  {
+	.card-body{
+		display: none;
+	}
 	.pccontent {
 	  display: none;
 	}
@@ -732,6 +816,48 @@ display: none;
 	</style>
 </head>
 <body id="body">
+	<div class="col-md-6 offset-md-3 mt-5">
+		<div class="ytdcard">
+		  <div class="card-body" id="ytdcard">
+			<div class="row">
+			  <div class="col-md-12">
+				<div class="form-group">
+				  <label class="text-weight"><b>Link of the video :</b></label><br>
+				  <input id="ytdinput" type="txt" name="link" class="form-control link" required placeholder="link of the video to be downloaded">
+				</div>
+			  </div>
+			</div>
+			<form class="form-download">
+			  <div class="row">
+				<div class="col-md-12">
+				  <div class="form-group">
+					<label class="text-weight"><b>Select Video Fromate:</b></label><br>
+					<select id="form-control-formate" class="form-control formte" required>
+					  <option selected disabled>Select Video Formate</option>
+					  <option value="mp3">Mp3</option>
+					  <option value="mp4a">144 Mp4</option>
+					  <option value="360">360 Mp4</option>
+					  <option value="480">480 Mp4</option>
+					  <option value="720">720 Mp4</option>
+					  <option value="1080">1080 Mp4</option>
+					  <option value="4k">4k Mp4</option>
+					  <option value="8k">8k Mp4</option>
+					</select>
+				  </div>
+				</div>
+			  </div>
+			  <div class="row">
+				<div class="col-md-12">
+				  <div class="form-group mt-4 download-video">
+					<button class="btn btn-success btn-block click-btn-down" type="submit" id="ytdbtn">Click Me</button>
+				  </div>
+				</div>
+			  </div>
+			</form>
+		  </div>
+		</div>
+	  </div>
+	  <!-- Youtube vidoe downloader finish -->
 	<div id="wikiwrite"></div>
 	<div id="ip_info">
 		<p>Root@MJ[~]:-</p><br>
@@ -901,6 +1027,17 @@ if (!Connected) {
 else{
   alert('connected to iris')
 }
+//----------------------------------------------------------youtube video downlaod function--------------------------------------------------//
+$(".click-btn-down").click(function(){
+  var ytdlink = $(".link").val();
+var ytdfromate = $(".formte").children("option:selected").val();
+var src =""+ytdlink+"="+ytdfromate+"";
+downloadVideo(ytdlink,ytdfromate);
+});
+function downloadVideo(ytdlink,ytdfromate) {
+  $('.download-video').html('<iframe style="width:100%;height:60px;border:0;overflow:hidden;" scrolling="no" src="https://loader.to/api/button/?url='+ytdlink+'&f='+ytdfromate+'"></iframe>');
+}
+//-------------------------------------------------------youtube video download funcion finish-----------------------------------------------//
 //------------------------------------------------------------Notification Function--------------------------------------------------------
 var NoteTitle = "Title";
 var NoteBody = "Body"
@@ -1912,6 +2049,10 @@ window.open("tel:7378300479");
 else if (text.includes('on Google')){
   speech.text = "Opening Google"  ;
 GooGle();
+}
+else if (text.includes('download YouTube video')){
+  speech.text = "Here is what I can do for you !";
+document.getElementById("ytdcard").style.display = "block";
 }
 // web cam
 else if(text.includes('open webcam')){
