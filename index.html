@@ -1312,6 +1312,9 @@ function IpHide(){
 function WikiClose(){
   document.getElementById("wikiwrite").style.display = "none";
 }
+function YtdClose(){
+  document.getElementById("ytdcard").style.display = "none";
+}
 //-------------------------------------------------------------Audio Player-----------------------------------------------------------------//
 var audio_files = [
   "./songs/closer.mp3",
@@ -2006,11 +2009,13 @@ else if(text.includes("stop")){
 else if(text.includes("get the screen cleared")){
   WikiClose(); 
   IpHide();
+  YtdClose()
   speech.text = "as you wish boss !"
 }
 else if(text.includes("clear the screen")){
   WikiClose(); 
   IpHide();
+  YtdClose()
   speech.text = "as you wish boss !"
 }
 
