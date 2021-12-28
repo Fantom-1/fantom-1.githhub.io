@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>LyricsSearch</title>
+  </head>
+  <body>
+    <header>
+      <h1>LyricsSearch</h1>
+
+      <form id="form">
+        <input
+          type="text"
+          id="search"
+          placeholder="Enter artist or song name..."
+        />
+        <button>Search</button>
+      </form>
+    </header>
+
+    <div id="result" class="container">
+      <p>Results will be displayed here</p>
+    </div>
+
+    <div id="more" class="container centered"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+<script>
+const form = document.getElementById('form');
+const search = document.getElementById('search');
+const result = document.getElementById('result');
+const more = document.getElementById('more');
+
+const apiURL = 'https://api.lyrics.ovh';
+
+// Search by song or artist
+async function searchSongs(term) {
+  const res = await fetch(`${apiURL}/suggest/${term}`);
+  const data = await res.json();
+
+  showData(data);
+}
+
+// Show song and artist in DOM
+function showData(data) {
+  result.innerHTML = `
+    <ul class="songs">
+      ${data.data
+        .map(
+          song => `<li>
+      <span><strong>${song.artist.name}</strong> - ${song.title}</span>
+      <button class="btn" data-artist="${song.artist.name}" data-songtitle="${song.title}">Get Lyrics</button>
+    </li>`
+        )
+        .join('')}
+    </ul>
+  `;
+
+  if (data.prev || data.next) {
+    more.innerHTML = `
+      ${
+        data.prev
+          ? `<button class="btn" onclick="getMoreSongs('${data.prev}')">Prev</button>`
+          : ''
+      }
+      ${
+        data.next
+          ? `<button class="btn" onclick="getMoreSongs('${data.next}')">Next</button>`
+          : ''
+      }
+    `;
+  } else {
+    more.innerHTML = '';
+  }
+}
+
+// Get prev and next songs
+async function getMoreSongs(url) {
+  const res = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+  const data = await res.json();
+
+  showData(data);
+}
+
+// Get lyrics for song
+async function getLyrics(artist, songTitle) {
+  const res = await fetch(`${apiURL}/v1/${artist}/${songTitle}`);
+  const data = await res.json();
+
+   if (data.error) {
+        result.innerHTML = data.error;
+   } else {
+        const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>');
+
+        result.innerHTML = `
+            <h2><strong>${artist}</strong> - ${songTitle}</h2>
+            <span>${lyrics}</span>
+        `;
+  }
+
+  more.innerHTML = '';
+}
+
+// Event listeners
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const searchTerm = search.value.trim();
+
+  if (!searchTerm) {
+    alert('Please type in a search term');
+  } else {
+    searchSongs(searchTerm);
+  }
+});
+
+// Get lyrics button click
+result.addEventListener('click', e => {
+  const clickedEl = e.target;
+
+  if (clickedEl.tagName === 'BUTTON') {
+    const artist = clickedEl.getAttribute('data-artist');
+    const songTitle = clickedEl.getAttribute('data-songtitle');
+
+    getLyrics(artist, songTitle);
+  }
+});
+</script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+input:focus,
+button:focus {
+  outline: none;
+}
+
+header {
+  background-image: url('https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+  position: relative;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+header * {
+  z-index: 1;
+}
+
+header h1 {
+  margin: 0 0 30px;
+}
+
+form {
+  position: relative;
+  width: 500px;
+  max-width: 100%;
+}
+
+form input {
+  border: 0;
+  border-radius: 50px;
+  font-size: 16px;
+  padding: 15px 30px;
+  width: 100%;
+}
+
+form button {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background-color: #e056fd;
+  border: 0;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 16px;
+  padding: 13px 30px;
+}
+
+.btn {
+  background-color: #8d56fd;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  padding: 4px 10px;
+}
+
+ul.songs {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.songs li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.container {
+  margin: 30px auto;
+  max-width: 100%;
+  width: 500px;
+}
+
+.container h2 {
+  font-weight: 300;
+}
+
+.container p {
+  text-align: center;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+}
+
+.centered button {
+  transform: scale(1.3);
+  margin: 15px;
+}
+</style>
