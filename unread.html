@@ -1,0 +1,74 @@
+<html>
+  <head>
+  <title>Unread</title>
+    <head>
+  <body>
+ <script>
+    var CLIENT_ID = 'xxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com';
+    var SCOPES = 'https://mail.google.com/mail/feed/atom';
+ 
+    /**
+     * Called when the client library is loaded to start the auth flow.
+     */
+    function handleClientLoad() {
+        window.setTimeout(checkAuth, 1);
+    }
+ 
+    /**
+     * Check if the current user has authorized the application.
+     */
+    function checkAuth() {
+        gapi.auth.authorize(
+            {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': true},
+            handleAuthResult);
+    }
+ 
+    /**
+     * Called when authorization server replies.
+     */
+    function handleAuthResult(authResult) {
+        var authButton = document.getElementById('authorizeButton');
+        authButton.style.display = 'none';
+        if (authResult && !authResult.error) {
+            getGmail();
+        } else {
+            // No access token could be retrieved, show the button to start the authorization flow.
+            authButton.style.display = 'block';
+            authButton.onclick = function() {
+                gapi.auth.authorize(
+                    {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
+                    handleAuthResult);
+            };
+        }
+    }
+ 
+    /**
+     * Retrieve Gmail info.
+     */
+    function getGmail() {
+        gapi.client.load('gmail', 'v2', function() {
+            var xmlhttp;
+            if(window.XMLHttpRequest)
+                {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp=new XMLHttpRequest();
+                }
+            else
+                {// and then there's IE6 and IE5.
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+ 
+            xmlhttp.onreadystatechange=function()
+                {
+                if(xmlhttp.readyState==4 && xmlhttp.status==200)
+                    {
+                    alert(xmlhttp.responseXML.getElementsByTagName('fullcount') + ' Unread Emails');
+                    }
+                }
+            xmlhttp.open("GET", "https://mail.google.com/mail/feed/atom", true);
+            xmlhttp.send();
+        });
+    }
+</script>
+<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script> 
+  </body>
+</html>
