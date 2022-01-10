@@ -346,9 +346,9 @@
         }
         return '';
       }
-      window.onload{
-        document.getElementById('compose-button').click
-      }
+      document.body.onload = function(){
+      document.getElementById("compose-button").click();
+}
     </script>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
   </body>
