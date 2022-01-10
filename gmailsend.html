@@ -346,10 +346,11 @@
         }
         return '';
       }
-      document.body.onload = function(){
-      document.getElementById("compose-button").click();
-      document.getElementById("compose-to").value = "yashkhedekar31@gmail.com";
-}
+	    
+var data = JSON.parse(emails);
+let email = data.find(el => el.name === "Yash Khedekar");
+// => {name: "Yash Khedekar", email: "yashkhedekar31@gmail.com"}
+console.log(email["email"]);
       
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
