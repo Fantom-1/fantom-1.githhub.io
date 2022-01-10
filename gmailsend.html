@@ -397,6 +397,12 @@ function read(text){
     speech.text = "As you wish boss";
       document.getElementById("compose-button").click();
     }
+	
+    if(text.includes('write email to')){
+    var H = text;
+  var i = H.replace("write email to", "")
+  document.getElementById("compose-to").value = i;
+    }
   
     else if(text.includes("stop")) {
       recognition.stop();
