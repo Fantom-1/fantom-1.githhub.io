@@ -101,7 +101,7 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="emails.json"></script>
+    <script type="text/javascript" src="data.json"></script>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
@@ -347,7 +347,7 @@
         return '';
       }
 	    
-var data = JSON.parse(emails);
+var data = JSON.parse(data);
 let email = data.find(el => el.name === "Yash Khedekar");
 // => {name: "Yash Khedekar", email: "yashkhedekar31@gmail.com"}
 console.log(email["email"]);
