@@ -347,11 +347,11 @@
         return '';
       }
 	    
-var data=[{name:"Afghanistan",code:"AF"},{name:"Åland Islands",code:"AX"},{name:"Albania",code:"AL"},{name:"Algeria",code:"DZ"}];
+var data=[{name:"Yash Khedekar",email:"yashkhedekar31@gmail.com"},{name:"Archana Khedekar",email:"archanakhedekar65@gmail.com"},{name:"Uday Khedekar",email:"udaykhedekar17@gmail.com"}];
 
-let country = data.find(el => el.code === "AL");
-// => {name: "Albania", code: "AL"}
-console.log(country["name"]);
+let country = data.find(el => el.name === "Yash Khedekar");
+// => {name: "Yash Khedekar", email: "yashkhedekar31@gmail.com"}
+console.log(country["email"]);
       
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
