@@ -394,12 +394,12 @@ function read(text){
     }
     
     if(text.includes('write email')){
-    speech.text = "Okay boss";
+    speech.text = "As you wish boss";
       document.getElementById("compose-button").click();
     }
   
     else if(text.includes("stop")) {
-      StopSpeak();
+      recognition.stop();
     }
 
     window.speechSynthesis.speak(speech);
