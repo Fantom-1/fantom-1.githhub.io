@@ -418,8 +418,8 @@ else if(text.includes("close the compose window")) {
 	
 else if(text.includes("send email to")) {
 const emailname = text;
-const emailname = emailname.replace("send email to", "")
-let country = data.find(el => el.name === emailname);
+const emailname1 = emailname.replace("send email to", "")
+let country = data.find(el => el.name === emailname1);
 // => {name: "Yash Khedekar", email: "yashkhedekar31@gmail.com"}
 console.log(country["email"]);
 }
