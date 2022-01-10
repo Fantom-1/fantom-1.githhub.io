@@ -422,6 +422,7 @@ const emailname1 = emailname.replace("send email to", "")
 let country = data.find(el => el.name === emailname1);
 // => {name: "Yash Khedekar", email: "yashkhedekar31@gmail.com"}
 console.log(country["email"]);
+	speech.text = "Preparing draft for" + emailname1;
 }
     window.speechSynthesis.speak(speech);
 }
