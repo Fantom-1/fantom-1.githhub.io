@@ -60,8 +60,8 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" id="send-button" class="btn btn-primary">Send</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="Close-Compose">Close</button>
+              <button type="submit" id="send-button" class="btn btn-primary" id="Send-Mail">Send</button>
             </div>
           </form>
         </div>
@@ -406,6 +406,11 @@ function read(text){
   
     else if(text.includes("stop")) {
       recognition.stop();
+    }
+	
+else if(text.includes("close the compose window")) {
+	speech.text = 'writing discontinued !'
+       document.getElementById("Close-Compose").click();
     }
 
     window.speechSynthesis.speak(speech);
