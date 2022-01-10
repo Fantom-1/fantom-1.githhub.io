@@ -348,10 +348,6 @@
       }
 	    
 	    
-var data = [{name:"Yash Khedekar",email:"yashkhedekar31@gmail.com"},
-	  {name:"Archana Khedekar",email:"archanakhedekar65@gmail.com"},
-	  {name:"Uday Khedekar",email:"udaykhedekar17@gmail.com"}
-	 ];
       
 	    
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -417,12 +413,18 @@ else if(text.includes("close the compose window")) {
     }
 	
 else if(text.includes("send email to")) {
+	
+	var data = [{name:"Yash Khedekar",email:"yashkhedekar31@gmail.com"},
+	  {name:"Archana Khedekar",email:"archanakhedekar65@gmail.com"},
+	  {name:"Uday Khedekar",email:"udaykhedekar17@gmail.com"}
+	 ];
+	
 const emailname = text;
 const emailname1 = emailname.replace("send email to", "")
 let country = data.find(el => el.name === emailname1);
 // => {name: "Yash Khedekar", email: "yashkhedekar31@gmail.com"}
 console.log(country["email"]);
-	speech.text = "Preparing draft for" + emailname1;
+speech.text = "Preparing draft for" + emailname1;
 }
     window.speechSynthesis.speak(speech);
 }
