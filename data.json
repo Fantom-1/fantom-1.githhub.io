@@ -1,4 +1,4 @@
-emails = [
+data = [
 
 {"name" : "Yash Khedekar", "email" : "yashkhedekar31@gmail.com"},
 {"name" : "Archana Khedekar", "email" : "archanakhedekar65@gmail.com"}
