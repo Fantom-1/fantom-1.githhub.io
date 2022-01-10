@@ -347,12 +347,13 @@
         return '';
       }
 	    
-var data=[{name:"Yash Khedekar",email:"yashkhedekar31@gmail.com"},{name:"Archana Khedekar",email:"archanakhedekar65@gmail.com"},{name:"Uday Khedekar",email:"udaykhedekar17@gmail.com"}];
-
-let country = data.find(el => el.name === "Yash Khedekar");
-// => {name: "Yash Khedekar", email: "yashkhedekar31@gmail.com"}
-console.log(country["email"]);
+	    
+var data = [{name:"Yash Khedekar",email:"yashkhedekar31@gmail.com"},
+	  {name:"Archana Khedekar",email:"archanakhedekar65@gmail.com"},
+	  {name:"Uday Khedekar",email:"udaykhedekar17@gmail.com"}
+	 ];
       
+	    
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
 recognition.continuous = true; 
@@ -414,7 +415,14 @@ else if(text.includes("close the compose window")) {
 	speech.text = "writing discontinued !"
        document.getElementById("Close-Compose").click();
     }
-
+	
+else if(text.includes("send email to")) {
+const emailname = text;
+const emailname = emailname.replace("send email to", "")
+let country = data.find(el => el.name === emailname);
+// => {name: "Yash Khedekar", email: "yashkhedekar31@gmail.com"}
+console.log(country["email"]);
+}
     window.speechSynthesis.speak(speech);
 }
     </script>
