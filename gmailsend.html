@@ -350,6 +350,60 @@
       document.getElementById("compose-button").click();
       document.getElementById("compose-to").value = "yashkhedekar31@gmail.com";
 }
+      
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+recognition.continuous = true; 
+function MarathiLang(){
+  recognition.lang = "mr-IN";
+}
+
+ document.body.onload = function(){
+       recognition.start();
+  }
+recognition.onstart = function(){
+    console.log('You can speak now');
+}
+
+recognition.onresult = function(event){
+    let current = event.resultIndex;
+    let text = event.results[current][0].transcript;
+    console.log(text);
+    read(text);
+}
+recognition.onend = function () {
+  recognition.start();
+};
+		
+alert("Establishing secure connection [~] Please stand By.")
+alert('Hi This is I.R.I.S your digital assistant')
+
+
+function read(text){
+    var speech = new SpeechSynthesisUtterance();
+    speech.text = text;
+    speech.pitch = '1';
+    speech.rate = '0.9'
+    speech.volume = 1;
+    var voices = window.speechSynthesis.getVoices();
+    speech.voice = voices[8];
+
+    
+    function StopSpeak(){
+      window.speechSynthesis.cancel()
+    }
+    
+    if(text.includes('write email')){
+    speech.text = "Okay boss";
+      document.getElementById("compose-button").click();
+    }
+  
+    else if(text.includes("stop")) {
+      StopSpeak();
+    }
+
+    window.speechSynthesis.speak(speech);
+}
     </script>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
   </body>
