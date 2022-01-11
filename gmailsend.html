@@ -407,7 +407,7 @@ else if(text.includes("close the compose window")) {
        document.getElementById("Close-Compose").click();
     }
 	
-else if(text.includes("write email to")) {
+else if(text.includes("send email to")) {
 	
 	const search = (haystack, k, v) => objectScan([`list[*].${k}`], {
   rtn: 'parent',
@@ -415,7 +415,7 @@ else if(text.includes("write email to")) {
 })(haystack);
 
 const emailname = text;
-const emailnamee = emailname.replace("write email to", "")
+const emailnamee = emailname.replace("send email to", "")
 const emailnameee = emailnamee.replace(/\s/g, '');
 console.log(emailnameee)
 	
