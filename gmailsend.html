@@ -3,7 +3,7 @@
   <head>
     <title>Gmail API demo</title>
     <meta charset="UTF-8">
-
+  <script src="https://bundle.run/object-scan@13.8.0"></script>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <style>
@@ -397,13 +397,8 @@ function read(text){
       document.getElementById("compose-button").click();
     }
 	
-    if(text.includes('write email to')){
-    var H = text;
-  var i = H.replace("write email to", "")
-  document.getElementById("compose-to").value = i;
-    }
   
-    else if(text.includes("stop")) {
+ else if(text.includes("stop")) {
       recognition.stop();
     }
 	
@@ -412,19 +407,31 @@ else if(text.includes("close the compose window")) {
        document.getElementById("Close-Compose").click();
     }
 	
-else if(text.includes("send email to")) {
+else if(text.includes("write email to")) {
 	
-	var data = [{name:"Yash Khedekar",email:"yashkhedekar31@gmail.com"},
-	  {name:"Archana Khedekar",email:"archanakhedekar65@gmail.com"},
-	  {name:"Uday Khedekar",email:"udaykhedekar17@gmail.com"}
-	 ];
-	
+	const search = (haystack, k, v) => objectScan([`list[*].${k}`], {
+  rtn: 'parent',
+  filterFn: ({ value }) => value === v
+})(haystack);
+
 const emailname = text;
-const emailname1 = emailname.replace("send email to", "")
-let country = data.find(el => el.name === emailname1);
-// => {name: "Yash Khedekar", email: "yashkhedekar31@gmail.com"}
-console.log(country["email"]);
-speech.text = "Preparing draft for" + emailname1;
+const emailnamee = emailname.replace("write email to", "")
+const emailnameee = emailnamee.replace(/\s/g, '');
+console.log(emailnameee)
+	
+const obj = { list: [ { name: 'YashKhedekar', id: 1, email: 'yashkhedekar31@gmail.com' }, 
+{ name: 'ArchanaKhedekar', id: 13, email: 'archanakhedekar65@gmail.com' },
+{ name: 'UdayKhedekar', id: 14, email: 'udaykhedekar17@gmail.com' },
+{ name: 'RajeshwarKhedekar', id: 15, email: 'rajeshwarkhedekar@gmail.com' }
+] };
+
+ const email = (search(obj, 'name', emailnameee));
+ const emailid = email[0].email;
+ console.log(emailid);
+
+document.getElementById("compose-to").value = emailid;
+document.getElementById("compose-button").click();
+
 }
     window.speechSynthesis.speak(speech);
 }
