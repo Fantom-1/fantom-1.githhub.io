@@ -157,6 +157,7 @@
           'userId': 'me',
           'labelIds': 'UNREAD'
         });
+	      console.log(request.length);
         request.execute(function(response) {
           $.each(response.messages, function() {
             var messageRequest = gapi.client.gmail.users.messages.get({
