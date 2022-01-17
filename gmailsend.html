@@ -183,9 +183,6 @@
           </tr>'
         );
 	      
-	var unread_messages_length = document.getElementById('table1').rows[0].cells.length;
-	      console.log(unread_messages_length);
-	      
         var reply_to = (getHeader(message.payload.headers, 'Reply-to') !== '' ?
           getHeader(message.payload.headers, 'Reply-to') :
           getHeader(message.payload.headers, 'From')).replace(/\"/g, '&quot;');
