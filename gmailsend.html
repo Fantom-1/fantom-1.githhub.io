@@ -24,7 +24,7 @@
 
       <button id="authorize-button" class="btn btn-primary hidden">Authorize</button>
 
-      <table class="table table-striped table-inbox hidden">
+      <table class="table table-striped table-inbox hidden" id="table1">
         <thead>
           <tr>
             <th>From</th>
@@ -158,11 +158,6 @@
           'labelIds': 'UNREAD'
         });
 	      
-	      console.log(gapi.client.gmail.users.messages.list({
-          'userId': 'me',
-          'labelIds': 'UNREAD'
-        }).length);
-	      
         request.execute(function(response) {
           $.each(response.messages, function() {
             var messageRequest = gapi.client.gmail.users.messages.get({
@@ -187,6 +182,10 @@
             <td>'+getHeader(message.payload.headers, 'Date')+'</td>\
           </tr>'
         );
+	      
+	var unread_messages_length = document.getElementById('table1').rows[0].cells.length;
+	      console.log(unread_messages_length);
+	      
         var reply_to = (getHeader(message.payload.headers, 'Reply-to') !== '' ?
           getHeader(message.payload.headers, 'Reply-to') :
           getHeader(message.payload.headers, 'From')).replace(/\"/g, '&quot;');
