@@ -17,6 +17,11 @@
       th:nth-child(3), td:nth-child(3) {
     color: red;
 }
+.modal-body {
+    position: relative;
+    padding: 15px;
+    border-top: 3px solid;
+}
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
@@ -24,12 +29,23 @@ body {
     color: #1292e7;
     background-color: #071024;
     }
-	    
+h4 {
+    font-size: 25px;
+}   
+h1#GMSC {
+    font-size: 14px;
+    text-align: left;
+}
+	    .modal-body {
+    position: relative;
+    padding: 15px;
+    border-top: 3px solid;
+}
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Gmail API demo</h1>
+      <h1>Gmail Made Smarter ~ I.R.I.S</h1>
 
       <a href="#compose-modal" data-toggle="modal" id="compose-button" class="btn btn-primary pull-right hidden">Compose</a>
 
@@ -54,7 +70,7 @@ body {
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-            <h4 class="modal-title">Compose</h4>
+            <h4 class="modal-title">Write Email</h4>
           </div>
           <form onsubmit="return sendEmail();">
             <div class="modal-body">
@@ -71,6 +87,7 @@ body {
               </div>
             </div>
             <div class="modal-footer">
+	      <h1 id="GMSC">Gmail Made Smarter | © I.R.I.S</h1>
               <button type="button" class="btn btn-default" data-dismiss="modal" id="Close-Compose">Close</button>
               <button type="submit" id="send-button" class="btn btn-primary" id="Send-Mail">Send</button>
             </div>
