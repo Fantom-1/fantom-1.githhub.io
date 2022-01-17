@@ -162,7 +162,8 @@
           $.each(response.messages, function() {
             var messageRequest = gapi.client.gmail.users.messages.get({
               'userId': 'me',
-              'id': this.id
+              'id': this.id,
+	      'type': 'unread'
             });
             messageRequest.execute(appendMessageRow);
           });
