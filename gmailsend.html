@@ -193,7 +193,7 @@ const emailReceived = () => {
 
       function displayInbox() {
         var request = gapi.client.gmail.users.messages.list({
-	   q: query,
+	  'q': query,
           'userId': 'me',
           'labelIds': 'UNREAD'
 		
