@@ -198,22 +198,6 @@ h1#GMSC {
           });
         });
       }
-
-	 
-const emailReceived = () => {
-  const secondsSinceEpoch = (date) => Math.floor(date.getTime() / 1000);
-  const after = new Date();
-  const before = new Date();
-  after.setHours(12, 15, 0, 0);
-  before.setHours(13, 30, 0, 0);
-  const query = `after:${secondsSinceEpoch(after)} before:${secondsSinceEpoch(
-    before
-  )}`;
-  const messages = Gmail.Users.Messages.list('me', {
-    q: query,
-  });
-  console.log(messages);
-};
 	    
 	    
       function appendMessageRow(message) {
