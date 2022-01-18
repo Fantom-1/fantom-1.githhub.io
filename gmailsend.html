@@ -212,7 +212,7 @@ const emailReceived = () => {
   const messages = Gmail.Users.Messages.list('me', {
     q: query,
   });
-  Logger.log(messages);
+  console.log(messages);
 };
 	    
 	    
