@@ -185,7 +185,7 @@ h1#GMSC {
         var request = gapi.client.gmail.users.messages.list({
           'userId': 'me',
           'labelIds': 'UNREAD'
-		
+	  'q' : 'from : rajeshwarkhedekar@gmail.com'	
         });
 	      
         request.execute(function(response) {
