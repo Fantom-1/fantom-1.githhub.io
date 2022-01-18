@@ -176,14 +176,27 @@ h1#GMSC {
         }
       }
 
+	    
+const emailReceived = () => {
+  const secondsSinceEpoch = (date) => Math.floor(date.getTime() / 1000);
+  const after = new Date();
+  const before = new Date();
+  after.setHours(12, 15, 0, 0);
+  before.setHours(13, 30, 0, 0);
+  const query = `after:${secondsSinceEpoch(after)} before:${secondsSinceEpoch(
+    before
+  )}`;	    
+	    
       function loadGmailApi() {
         gapi.client.load('gmail', 'v1', displayInbox);
       }
 
       function displayInbox() {
         var request = gapi.client.gmail.users.messages.list({
+	   q: query,
           'userId': 'me',
           'labelIds': 'UNREAD'
+		
         });
 	      
         request.execute(function(response) {
