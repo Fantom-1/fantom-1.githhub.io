@@ -156,7 +156,7 @@
         var request = gapi.client.gmail.users.messages.list({
           'userId': 'me',
           'labelIds': 'UNREAD',
-          'maxResults': 10
+          'maxResults': 15
         });
         request.execute(function(response) {
           $.each(response.messages, function() {
