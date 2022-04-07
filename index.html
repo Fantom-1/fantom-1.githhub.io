@@ -618,7 +618,18 @@ display: none;
 	font-size: 14px;
 	text-align: center;
 		}
+#wikiimg{
+	display: none;
+	position: absolute;
+    top: 25%;
+    left: 65%;
+	order: 2px solid #1292e7;
+	width: 12%;
+}
 @media only screen and (max-width: 600px)  {
+	#wikiimg{
+		display: none;
+	}
 	.card-body{
 		display: none;
 	}
@@ -865,7 +876,7 @@ display: none;
 		</div>
 	  </div>
 	  <!-- Youtube vidoe downloader finish -->
-	<div id="wikiwrite"></div>
+	<div id="wikiwrite"></div><img src="" alt="" id="wikiimg">
 	<div id="ip_info">
 		<p>Root@MJ[~]:-</p><br>
 		<h1 id="ip"></h1><br>
@@ -1321,6 +1332,15 @@ function WikiClose(){
 }
 function YtdClose(){
   document.getElementById("ytdcard").style.display = "none";
+}
+function ClrScr(){
+document.getElementById("ip_info").style.display = "none";
+  document.getElementById("wikiwrite").style.display = "none";
+  document.getElementById("ytdcard").style.display = "none";
+  document.getElementById("bdapp").style.display = "none";
+  document.getElementById("wikiimg").style.display = "none";
+
+
 }
 //-------------------------------------------------------------Audio Player-----------------------------------------------------------------//
 var audio_files = [
@@ -1998,7 +2018,10 @@ else if(text.includes("Wikipedia")){
     var bill = data.extract;
     console.log(data.extract);
     speech.text = document.getElementById("wikiwrite").innerHTML = bill; 
+    document.getElementById("wikiimg").src = data.thumbnail.source;
     document.getElementById("wikiwrite").style.display = "block";
+    document.getElementById("wikiimg").style.display = "block";
+
     const msg = new SpeechSynthesisUtterance();
     msg.text = bill;
     msg.pitch = '1';
@@ -2014,15 +2037,11 @@ else if(text.includes("stop")){
   StopSpeak();
 }
 else if(text.includes("get the screen cleared")){
-  WikiClose(); 
-  IpHide();
-  YtdClose()
+ClrScr()
   speech.text = "as you wish boss !"
 }
 else if(text.includes("clear the screen")){
-  WikiClose(); 
-  IpHide();
-  YtdClose()
+ClrScr()
   speech.text = "as you wish boss !"
 }
 
@@ -2052,11 +2071,7 @@ else if (text.includes('show')){
   speech.text = "Opening page !"  ;
 show();
 }
-// Call function
-else if (text.includes('call Tushar')){
-window.open("tel:7378300479");
-  speech.text = "As you wish boss"  ;
-}
+
 // google search execution 
 else if (text.includes('on Google')){
   speech.text = "Opening Google"  ;
