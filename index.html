@@ -623,7 +623,7 @@ display: none;
 	position: absolute;
     top: 25%;
     left: 65%;
-	order: 2px solid #1292e7;
+	border: 2px solid #1292e7;
 	width: 12%;
 }
 @media only screen and (max-width: 600px)  {
@@ -2036,10 +2036,12 @@ else if(text.includes("stop")){
 }
 else if(text.includes("get the screen cleared")){
 ClrScr();
+document.getElementById("wikiimg").style.display = "none";
   speech.text = "as you wish boss !"
 }
 else if(text.includes("clear the screen")){
 ClrScr();
+document.getElementById("wikiimg").style.display = "none";
   speech.text = "as you wish boss !"
 }
 
