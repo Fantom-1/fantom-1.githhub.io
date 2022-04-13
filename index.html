@@ -1478,8 +1478,8 @@ function GooGle(){
   //----------------------------------------------------Youtube Video function----------------------------------------------------------------//
   function YouTube(){
     const yo = document.querySelector('#result').innerHTML;
-    const you = yo.replace("on", "")
-    const yout = you.replace("YouTube", " ")
+    const you = yo.replace("search", "")
+    const yout = you.replace("on YouTube", " ")
     const youtu = yout.replace(" ", "+")
       window.open("https://www.youtube.com/results?search_query="+youtu);
   }
@@ -1849,7 +1849,36 @@ else if(text.includes(refresh[3])){
  refreshPage();
 }
 // youtube search execution
-else if(text.includes("on YouTube")){
+else if(text.indexOf('play', "on YouTube") > -1){
+   function PlayYoutube(){
+    const yo = document.querySelector('#result').innerHTML;
+    const you = yo.replace("play", "");
+    const yout = you.replace("on YouTube", " ");
+    const youtu = yout.replace(" ", "+");
+    const youspeak = yout.replace("+", "");
+    speech.text = "playing" + youspeak + "on youtube";
+
+    $.get(
+      "https://www.googleapis.com/youtube/v3/search",{
+          part: 'snippet, id',
+          q: youtu,
+          type: 'video',
+          key: "AIzaSyCztQNa5WE28vMYDZvEvp4ftpd2v-HI2zk"
+},
+
+          function(data){
+            var VideoId =  data.items[1].id.videoId;
+              console.log(data.items[1].id.videoId);
+              window.open("https://www.youtube.com/watch?v=" + VideoId);
+          }
+  );
+      
+  }
+PlayYoutube();
+
+}
+// youtube search execution
+else if(text.indexOf('search', "on YouTube") > -1){
   speech.text = reyoutube[Math.floor(Math.random()*reyoutube.length)];
   YouTube();
 }
