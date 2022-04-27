@@ -22,6 +22,16 @@
         .then(function() { console.log("Sign-in successful"); },
               function(err) { console.error("Error signing in", err); });
   }
+    
+    data = {
+    'content': '<b> Welcome ! </b> <br/> This is my first automated post through API.',
+    'title':'Python post sample',
+    'publish': true,
+    'blog': {
+        'id': BLOG_ID
+      },
+}
+    
   function loadClient() {
     gapi.client.setApiKey("AIzaSyDpW4yO-m43k3PPzb5RKhsYLKWhpd9jIv4");
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/blogger/v3/rest")
