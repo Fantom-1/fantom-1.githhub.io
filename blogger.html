@@ -23,14 +23,7 @@
               function(err) { console.error("Error signing in", err); });
   }
     
-    data = {
-    'content': '<b> Welcome ! </b> <br/> This is my first automated post through API.',
-    'title':'Python post sample',
-    'publish': true,
-    'blog': {
-        'id': blog['id']
-      },
-}
+ 
     
   function loadClient() {
     gapi.client.setApiKey("AIzaSyDpW4yO-m43k3PPzb5RKhsYLKWhpd9jIv4");
@@ -41,8 +34,10 @@
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
     return gapi.client.blogger.posts.publish({
-      title: "Demo post",
-      publish: true,
+      templateKey: blog-post
+title: "Demo draft successful".
+status: draft
+
     })
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
