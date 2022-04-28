@@ -34,9 +34,10 @@
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
     return gapi.client.blogger.posts.publish({
-      templateKey: blog-post
-title: "Demo draft successful",
-status: draft
+  'kind': 'blogger#post',
+        'blogId': 5224105796136938159,
+        'title' : 'This is the Post Title - ' ,
+        'content': 'Content of the Article goes here'
 
     })
         .then(function(response) {
