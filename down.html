@@ -19,9 +19,10 @@
        
         let formData = new FormData();           
         formData.append("file", fileupload.files[0]);
-        $.post('https://' + server  + '.gofile.io/uploadFile', {
+        fetch('https://' + server  + '.gofile.io/uploadFile', {
+            method : "post",
           file : formData,
-          token : "EDsgnDa8RZqKEuX39UlHJx0YAzvcSY7E",
+          token : "EDsgnDa8RZqKEuX39UlHJx0YAzvcSY7E"
           
         });    
         alert('The file has been uploaded successfully.');
