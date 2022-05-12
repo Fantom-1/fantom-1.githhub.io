@@ -5,9 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Git Login App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="upload.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="upload.js"></script>
 </head>
 <body>
    <div>
@@ -57,7 +55,7 @@
 
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
-    const redirect_uri = "" // replace with your redirect_uri;
+    const redirect_uri = "https://fantom-1.github.io/iris/drive" // replace with your redirect_uri;
     const client_secret = "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"; // replace with your client secret
     const scope = "https://www.googleapis.com/auth/drive";
     var access_token= "AIzaSyC3SQU627NwWall6SHTf75FkZxQSmEL3Rk";
