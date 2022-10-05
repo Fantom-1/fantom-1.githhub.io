@@ -1627,7 +1627,7 @@ const rerefresh = ["Ok Boss !", "As you wish boss !", "Anything for you boss !",
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
-recognition.continuous = true; 
+
 function MarathiLang(){
   recognition.lang = "mr-IN";
 }
@@ -1644,7 +1644,7 @@ recognition.onresult = function(event){
     read(text);
 }
 
-};
+
 		
 alert("Establishing secure connection [~] Please stand By.")
 alert('Hi This is I.R.I.S your digital assistant')
